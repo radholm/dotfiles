@@ -15,12 +15,12 @@ function run {
 #run xrandr --output DVI-1 --right-of DVI-0 --auto
 #run xrandr --output DVI-D-1 --right-of DVI-I-1 --auto
 #run xrandr --output HDMI2 --right-of HDMI1 --auto
-run xrandr -r 120
 
+#run xrandr -r 120
 run "nm-applet"
 run "pamac-tray"
-run "variety"
-run "xfce4-power-manager"
+#run "variety"
+#run "xfce4-power-manager"
 run "blueberry-tray"
 run "/usr/lib/xfce4/notifyd/xfce4-notifyd"
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
@@ -30,7 +30,7 @@ run "volumeicon"
 run slstatus &
 sxhkd -c ~/.config/arco-dwm/sxhkd/sxhkdrc &
 run "nitrogen --restore"
-run "conky -c $HOME/.config/arco-dwm/system-overview"
+#run "conky -c $HOME/.config/arco-dwm/system-overview"
 #you can set wallpapers in themes as well
 #feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 

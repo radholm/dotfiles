@@ -201,7 +201,7 @@ alias ssn="sudo shutdown now"
 alias sr="sudo reboot"
 
 #git
-alias dotfiles='/usr/bin/git --git-dir=/home/radholm/.cfg/ --work-tree=/home/radholm'
+alias dotfiles="/usr/bin/git --git-dir=/home/radholm/.cfg/ --work-tree=/home/radholm"
 
 # # ex = EXtractor for all kinds of archives
 # # usage: ex <file>
