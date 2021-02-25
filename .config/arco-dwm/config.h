@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 6;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 32;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -17,10 +17,10 @@ static const char normbgcolor[]     = "#000000";
 static const char normbordercolor[] = "#000000";
 static const char normfgcolor[]     = "#c0c0c0";
 static const char selfgcolor[]      = "#e8e8e8";
-static const char selbordercolor[]  = "#000000";
+static const char selbordercolor[]  = "#404040";
 static const char selbgcolor[]      = "#000000";
 static const unsigned int baralpha  = 0xc0;
-static const unsigned int borderalpha = 0xe0;
+static const unsigned int borderalpha = 0xc0;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { normfgcolor,	normbgcolor, 	normbordercolor },
