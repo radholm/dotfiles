@@ -14,6 +14,8 @@
 
 export HISTCONTROL=ignoreboth:erasedups
 export EDITOR=vim
+export _JAVA_AWT_WM_NONREPARENTING=1
+export AWT_TOOLKIT=MToolkit
 
 PS1='[\u@\h \W]\$ '
 

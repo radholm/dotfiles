@@ -16,7 +16,7 @@ function run {
 #run xrandr --output DVI-D-1 --right-of DVI-I-1 --auto
 #run xrandr --output HDMI2 --right-of HDMI1 --auto
 
-#run xrandr -r 120
+run xrandr -r 120
 run "nm-applet"
 run "pamac-tray"
 #run "variety"
@@ -30,6 +30,7 @@ run "volumeicon"
 run slstatus &
 sxhkd -c ~/.config/arco-dwm/sxhkd/sxhkdrc &
 nitrogen --restore &
+wmname LG3D
 
 #run applications from startup
 
