@@ -34,8 +34,8 @@ window:
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 6
-    y: 6
+    x: 64
+    y: 64
 
   # Spread additional padding evenly around the terminal content.
   #dynamic_padding: false
@@ -118,7 +118,7 @@ font:
     # family: Monofur Nerd Font
     # family: TerminessTTF Nerd Font
     # family: SauceCodePro Nerd Font
-    family: monospace
+    family: "Fira Code"
 
     # The `style` can be specified to pick a specific face.
     style: Regular
@@ -184,7 +184,7 @@ font:
     style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 9.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.

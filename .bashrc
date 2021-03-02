@@ -239,3 +239,5 @@ ex ()
 [[ -f ~/.bashrc-personal ]] && . ~/.bashrc-personal
 
 neofetch
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
