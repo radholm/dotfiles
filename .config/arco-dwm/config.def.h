@@ -1,26 +1,30 @@
 /* See LICENSE file for copyright and license details. */
 
+/* Constants */
+#define TERMINAL "alacritty"
+
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 32;        /* gaps between windows */
+static const unsigned int gappx     = 32;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const unsigned int systrayspacing = 0;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const int showsystray        = 0;     	/* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int user_bh	    = 22;
 static const Bool viewontag         = True;     /* Switch view on tag switch */
-static const char *fonts[]          = { "monospace:size=10", "fontawesome:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
-static const char normbgcolor[]     = "#000000";
-static const char normbordercolor[] = "#000000";
+static const char *fonts[]          = { "hack:size=9", "fontawesome:size=9" };
+static const char dmenufont[]       = "hack:size=9";
+static const char normbgcolor[]     = "#2A313B";
+static const char normbordercolor[] = "#2A313B";
 static const char normfgcolor[]     = "#c0c0c0";
 static const char selfgcolor[]      = "#e8e8e8";
 static const char selbordercolor[]  = "#404040";
-static const char selbgcolor[]      = "#000000";
-static const unsigned int baralpha  = 0xc0;
-static const unsigned int borderalpha = 0xc0;
+static const char selbgcolor[]      = "#2A313B";
+static const unsigned int baralpha  = 0xFF;
+static const unsigned int borderalpha = 0xFF;
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { normfgcolor,	normbgcolor, 	normbordercolor },
@@ -83,7 +87,7 @@ static const char *filecmd[]  = { "thunar", NULL };
 static const char *calendar[]  = { "gsimplecal", NULL };
 static const char *taskmanager[]  = { "xfce4-taskmanager", NULL };
 static const char *web[] = { "qutebrowser", NULL };
-static const char *terminal[] = {"alacritty", NULL};
+static const char *terminal[] = { TERMINAL , NULL };
 
 #include "selfrestart.c"
 #include "shiftview.c"
@@ -95,6 +99,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = filecmd } },
 	{ MODKEY,			XK_w,	   spawn,	   {.v = web } },
 	{ MODKEY,			XK_Return, spawn,	   {.v = terminal } },
+	{ MODKEY,			XK_r,	   spawn,	   SHCMD(TERMINAL " -e lf") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },

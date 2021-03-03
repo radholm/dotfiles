@@ -16,20 +16,20 @@ function run {
 #run xrandr --output DVI-D-1 --right-of DVI-I-1 --auto
 #run xrandr --output HDMI2 --right-of HDMI1 --auto
 
+run "variety"
 run xrandr -r 120
 run "nm-applet"
 run "pamac-tray"
-#run "variety"
 #run "xfce4-power-manager"
 #run "blueberry-tray"
 run "/usr/lib/xfce4/notifyd/xfce4-notifyd"
 run "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 picom -b  --config ~/.config/arco-dwm/picom.conf &
 run "numlockx on"
+setxkbmap -option caps:escape &
 run "volumeicon"
 run slstatus &
 sxhkd -c ~/.config/arco-dwm/sxhkd/sxhkdrc &
-nitrogen --restore &
 wmname LG3D
 
 #run applications from startup
