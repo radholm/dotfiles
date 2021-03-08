@@ -65,6 +65,8 @@ static const Layout layouts[] = {
 	{ "T",        tile },    /* first entry is default */
 	{ "G",	      grid },
 	{ "M",	      monocle },
+	{ "C",	      centeredmaster },
+	{ "CF",	      centeredfloatingmaster },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,       NULL },
 };
@@ -121,6 +123,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,			XK_u,	   setlayout,	   {.v = &layouts[3]} },
+	{ MODKEY,			XK_o,	   setlayout,	   {.v = &layouts[4]} },
 	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_space,  cyclelayout,    {.i = +1 } },
