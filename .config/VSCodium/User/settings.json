@@ -991,13 +991,12 @@
     "**/.factorypath": true
   },
   "terminal.external.osxExec": "iTerm.app",
-  "editor.minimap.enabled": false,
   "workbench.activityBar.visible": true,
   "leetcode.workspaceFolder": "/Users/chris/Repos/leetcode",
   "leetcode.defaultLanguage": "javascript",
   "leetcode.hint.configWebviewMarkdown": false,
   "leetcode.hint.commentDescription": false,
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "window.menuBarVisibility": "toggle",
   "python.dataScience.alwaysTrustNotebooks": true,
   "python.condaPath": "$HOME/.miniconda/bin/conda",
@@ -1125,6 +1124,10 @@
   "workbench.startupEditor": "newUntitledFile",
   "python.showStartPage": false,
   "editor.snippetSuggestions": "bottom",
-  "glassit.alpha": 50,
-  "glassit.step": 10
+  "[java]": {
+    "editor.defaultFormatter": "mwpb.java-prettier-formatter"
+  },
+  "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨ TSA/ASD 🧩",
+  "keyboard.dispatch": "keyCode",
+  "editor.minimap.enabled": false,
 }
