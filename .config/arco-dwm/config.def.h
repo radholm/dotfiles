@@ -1,11 +1,13 @@
 /* See LICENSE file for copyright and license details. */
 
 /* Constants */
-#define TERMINAL "alacritty"
+#define TERMINAL "st"
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 32;       /* gaps between windows */
+static const int startwithgaps[]    = { 1 };	/* 1 means gaps are used by default, this can be customized for each tag */
+static const unsigned int gappx[]   = { 256 };   /* default gap between windows in pixels, this can be customized for each tag */
+//static const unsigned int gappx     = 32;       /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 0;   /* systray spacing */
@@ -13,7 +15,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 0;     	/* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh	    = 22;
+static const int user_bh	          = 22;
 static const Bool viewontag         = True;     /* Switch view on tag switch */
 static const char *fonts[]          = { "hack:size=9", "fontawesome:size=9" };
 static const char dmenufont[]       = "hack:size=9";
@@ -99,9 +101,9 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = filecmd } },
-	{ MODKEY,			XK_w,	   spawn,	   {.v = web } },
-	{ MODKEY,			XK_Return, spawn,	   {.v = terminal } },
-	{ MODKEY,			XK_r,	   spawn,	   SHCMD(TERMINAL " -e lf") },
+	{ MODKEY,			                  XK_w,	     spawn,	         {.v = web } },
+	{ MODKEY,			                  XK_Return, spawn,	         {.v = terminal } },
+	{ MODKEY,			                  XK_r,	     spawn,	         SHCMD(TERMINAL " -e lf") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_j,      rotatestack,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      rotatestack,    {.i = -1 } },
@@ -113,19 +115,20 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ MODKEY,                       0x002d,    setgaps,        {.i = -5} },
+	{ MODKEY,                       0x002b,    setgaps,        {.i = +5} },
+  { MODKEY|ShiftMask,             0x002d,    setgaps,        {.i = GAP_RESET } },
+  { MODKEY|ShiftMask,             0x002b,    setgaps,        {.i = GAP_TOGGLE} },
 	/*{ MODKEY,                       XK_Return, zoom,           {0} },*/
 	/*{ MODKEY,                       XK_Tab,    view,           {0} },*/
-	{ MODKEY,			XK_c,      killclient,     {0} },
+	{ MODKEY,			                  XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,			XK_u,	   setlayout,	   {.v = &layouts[3]} },
-	{ MODKEY,			XK_o,	   setlayout,	   {.v = &layouts[4]} },
-	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY,			                  XK_u,	     setlayout,	     {.v = &layouts[3]} },
+	{ MODKEY,			                  XK_o,	     setlayout,	     {.v = &layouts[4]} },
+	{ MODKEY|ControlMask,		        XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_space,  cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -140,10 +143,10 @@ static Key keys[] = {
 	{ Mod1Mask|ControlMask,         XK_Left,   shiftview,      {.i = -1 } },
 	{ Mod1Mask|ControlMask,         XK_Up,     shiftview,      {.i =  1 } },
 	{ Mod1Mask|ControlMask,         XK_Down,   shiftview,      {.i = -1 } },	
-	{ Mod1Mask,			XK_Tab,    shiftview,      {.i =  1 } },
-	{ Mod1Mask|ShiftMask,	        XK_Tab,	   shiftview,	   {.i = -1 } },
-	{ MODKEY,		        XK_Tab,    shiftview,	   {.i =  1 } },
-	{ MODKEY|ShiftMask,		XK_Tab,	   shiftview,	   {.i = -1 } },
+	{ Mod1Mask,			                XK_Tab,    shiftview,      {.i =  1 } },
+	{ Mod1Mask|ShiftMask,	          XK_Tab,	   shiftview,	     {.i = -1 } },
+	{ MODKEY,		                    XK_Tab,    shiftview,	     {.i =  1 } },
+	{ MODKEY|ShiftMask,		          XK_Tab,	   shiftview,	     {.i = -1 } },
 
 
 	TAGKEYS(                        XK_1,                      0)
@@ -156,30 +159,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 };
-
-/* IF YOU HAVE A AZERTY KEYBOARD USE THESE CODES
-	TAGKEYS(                        XK_ampersand,              0)
-	TAGKEYS(                        XK_eacute,                 1)
-	TAGKEYS(                        XK_quotedbl,               2)
-	TAGKEYS(                        XK_apostrophe,             3)
-	TAGKEYS(                        XK_parenleft,              4)
-	TAGKEYS(                        XK_section,                5)
-	TAGKEYS(                        XK_egrave,                 6)
-	TAGKEYS(                        XK_exclam,                 7)
-	TAGKEYS(                        XK_ccedilla,               8)
-*/
-
-/* THESE ARE THE ORIGINAL QWERTY KEYBOARD CODES
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-*/
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */

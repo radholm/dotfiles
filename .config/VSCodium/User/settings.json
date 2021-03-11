@@ -974,7 +974,7 @@
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "python.pythonPath": "/home/chris/.miniconda/envs/ds/bin/python",
   "java.semanticHighlighting.enabled": true,
-  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"/home/chris/.vscode-oss/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
+  "java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m -javaagent:\"/home/radholm/.vscode-oss/extensions/gabrielbb.vscode-lombok-1.0.1/server/lombok.jar\"",
   "workbench.list.automaticKeyboardNavigation": false,
   "oneDarkPro.editorTheme": "onedarkPro",
   "python.languageServer": "Pylance",
@@ -996,7 +996,6 @@
   "leetcode.defaultLanguage": "javascript",
   "leetcode.hint.configWebviewMarkdown": false,
   "leetcode.hint.commentDescription": false,
-  "window.zoomLevel": 1,
   "window.menuBarVisibility": "toggle",
   "python.dataScience.alwaysTrustNotebooks": true,
   "python.condaPath": "$HOME/.miniconda/bin/conda",
@@ -1127,7 +1126,11 @@
   "[java]": {
     "editor.defaultFormatter": "mwpb.java-prettier-formatter"
   },
-  "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨ TSA/ASD 🧩",
+  "workbench.colorTheme": "Super One Dark",
   "keyboard.dispatch": "keyCode",
   "editor.minimap.enabled": false,
+  "java.configuration.runtimes": [
+  
+  ],
+  "window.zoomLevel": 1,
 }
