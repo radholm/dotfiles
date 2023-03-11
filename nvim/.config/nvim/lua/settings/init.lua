@@ -20,12 +20,12 @@ set.tabstop = 4
 set.softtabstop = 4
 
 set.swapfile = false
-set.backup = false
-set.shell = 'c:/"Program Files"/git/bin/bash.exe'
-set.shellcmdflag= '--login -c'
-set.shellxquote= '"'
-set.undodir = 'c:/Users/radhofre/.vim/undodir'
-set.undofile = true
+-- set.backup = false
+-- set.shell = 'c:/"Program Files"/git/bin/bash.exe'
+-- set.shellcmdflag= '--login -c'
+-- set.shellxquote= '"'
+-- set.undodir = 'c:/Users/radhofre/.vim/undodir'
+-- set.undofile = true
 
 set.hlsearch = false
 set.incsearch = true
