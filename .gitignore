@@ -1,4 +1,5 @@
 /emacs/.emacs.d/eln-cache*
+/emacs/.emacs.d/elpa*
 /emacs/.emacs.d/auto-save-list*
 /emacs/.emacs.d/projectile-*
 nvim/.config/nvim/plugin/packer_compiled.lua

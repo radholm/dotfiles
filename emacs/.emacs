@@ -11,6 +11,7 @@
 (eval-when-compile (require 'use-package))
 
 (setq user-full-name "Fredrik Radholm")
+(setq inhibit-startup-message t)
 ;;(set-frame-parameter nil 'alpha '(95 95))
 ;;(setq visible-bell t)
 (global-display-line-numbers-mode t)
@@ -93,7 +94,7 @@
 (use-package which-key
   :ensure t
   :config
-  (setq which-key-idle-delay 0.3)
+  (setq which-key-idle-delay 0.5)
   (which-key-mode))
 
 (use-package counsel
@@ -114,6 +115,18 @@
   )
 (with-eval-after-load 'js (define-key js-mode-map (kbd "M-.") nil))
 (add-hook 'js-mode-hook #'lsp)
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode)
+  :config
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(javascript-jshint)))
+  (flycheck-add-mode 'javascript-eslint 'web-mode)
+  (flycheck-add-mode 'javascript-eslint 'js-mode)
+  (flycheck-add-mode 'javascript-eslint 'typescript-mode)
+  (flycheck-add-mode 'javascript-eslint 'typescript-tsx-mode))
 
 (use-package projectile
   :ensure t
@@ -185,7 +198,7 @@
 (evil-define-key 'normal 'global (kbd "<leader>pc") 'projectile-compile-project)
 (evil-define-key 'normal 'global (kbd "<leader>pr") 'projectile-run-project)
 (evil-define-key 'normal 'global (kbd "<leader>pk") 'kill-compilation-buffer)
-;; (evil-define-key 'normal 'global (kbd "<leader>m") 'magit)
+(evil-define-key 'normal 'global (kbd "<leader>m") 'magit)
 (evil-define-key 'normal 'global (kbd "<leader>t") 'counsel-load-theme)
 (evil-define-key 'normal 'global (kbd "<leader>X") 'previous-error)
 (evil-define-key 'normal 'global (kbd "<leader>x") 'next-error)
@@ -200,7 +213,7 @@
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
-   '(magit gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
+   '(gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
 ;;; .emacs ends here
 
 (custom-set-faces
