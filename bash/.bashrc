@@ -8,7 +8,7 @@
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
-PATH="$HOME/.scripts:/opt/cisco/anyconnect/bin:$PATH"
+PATH="$HOME/.scripts:$HOME/.local/bin:/opt/cisco/anyconnect/bin:$PATH"
 EDITOR="nvim"
 
 alias msteams='teams --no-sandbox --disable-seccomp-filter-sandbox --enable-features=WebRTCPipeWireCapturer'

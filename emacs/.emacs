@@ -28,6 +28,7 @@
 (show-paren-mode t)
 (setq show-paren-delay 0)
 
+(elpy-enable)
 (use-package lsp-ui :ensure t)
 (use-package company :ensure t)
 (use-package hydra :ensure t)
@@ -118,7 +119,7 @@
 
 (use-package flycheck
   :ensure t
-  :init (global-flycheck-mode)
+  :init (global-flycheck-mode 0)
   :config
   (setq-default flycheck-disabled-checkers
                 (append flycheck-disabled-checkers
@@ -126,7 +127,9 @@
   (flycheck-add-mode 'javascript-eslint 'web-mode)
   (flycheck-add-mode 'javascript-eslint 'js-mode)
   (flycheck-add-mode 'javascript-eslint 'typescript-mode)
-  (flycheck-add-mode 'javascript-eslint 'typescript-tsx-mode))
+  (flycheck-add-mode 'javascript-eslint 'typescript-tsx-mode)
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
+(setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
 
 (use-package projectile
   :ensure t
@@ -213,7 +216,7 @@
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
-   '(gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
+   '(elpy gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
 ;;; .emacs ends here
 
 (custom-set-faces

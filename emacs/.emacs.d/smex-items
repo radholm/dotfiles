@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ dired
  magit
  package-update-all
  package-reinstall
  package-install
  load-file
  set-mark-command
- lsp-mode
 )
 
 ;; ----- smex-data -----
@@ -27,4 +27,5 @@
  (package-install . 1)
  (package-update-all . 2)
  (magit-discard . 1)
+ (dired . 1)
 )
