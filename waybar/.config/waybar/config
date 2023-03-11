@@ -1,0 +1,77 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 10,
+    "spacing": 4,
+    "modules-left": ["wlr/workspaces", "custom/media"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
+    "wlr/workspaces": {
+        "format": "<span line_height='1.0'>{icon}</span>",
+     	"on-scroll-up": "hyprctl dispatch workspace e+1",
+     	"on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "<span line_height='1.0'>{:%H:%M}</span>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "battery": {
+        "states": {
+            "good": 70,
+            "warning": 30,
+            "critical": 15
+        },
+        "format-warning": "{capacity}% {icon}",
+        "format-critical": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "",
+        "format-alt": "{time} {icon}",
+        "format-good": "", // An empty format will hide the module
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        //"format-wifi": "{essid} ({signalStrength}%) ",
+        //"format-wifi": "<span font='20' line_height='0.5'></span>",
+        "format-wifi": "<span line_height='1.0'>w</span>",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        //"tooltip-format": "{ifname} via {gwaddr} ",
+        "tooltip-format": "{essid} ({signalStrength}%)",
+        "format-linked": "{ifname} (No IP) ",
+        //"format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "⚠",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "scroll-step": 1,
+        //"format": "{volume}% {icon} {format_source}",
+        //"format": "<span font='20' line_height='0.5'>{icon}</span>",
+        "format": "",
+        //"format-bluetooth": "{volume}% {icon} {format_source}",
+        //"format-bluetooth": "{volume}% <span font='14' line_height='0.5'>{icon} ",
+        "format-bluetooth": "ab{volume}%",
+        "format-bluetooth-muted": "_source}",
+        //"format-muted": " {format_source}",
+        "format-muted": "am",
+        //"format-source": "{volume}% ",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    }
+}
+

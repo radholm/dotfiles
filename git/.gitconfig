@@ -1,0 +1,11 @@
+[http]
+		sslBackend = openssl
+[credential]
+		helper = store
+[user]
+		name = Fredrik Radholm
+		email = fredrik.radholm@tietoevry.com
+[pull]
+		rebase = true
+[push]
+		autoSetupRemote = true

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+file_path="$(pwd)/node_modules/util.npm.scripts.misc.id1/src/test-runner.js"
+
+sed -i "s/logLevel: 'WARN',/logLevel: 'ERROR',/g" $file_path
+
+npm run dev

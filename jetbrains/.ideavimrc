@@ -1,0 +1,155 @@
+" Plugins
+" set sneak
+set which-key
+set NERDTree
+set surround
+set commentary
+set multiple-cursors
+set easymotion
+
+" Options
+set number
+set startofline
+set ideamarks
+" set relativenumber
+set incsearch
+set hlsearch
+set notimeout
+set showmode
+set showcmd
+set ignorecase
+set smartcase
+set history=1000
+set scrolloff=12 " 12 lines above/below cursor when scrolling
+" set clipboard+=ideaput
+set clipboard+=unnamed
+set highlightedyank
+" set ideajoin
+
+let g:EasyMotion_override_acejump=0
+let g:WhichKey_ShowVimActions="true"
+let g:WhichKey_FontSize=16
+let g:WhichKey_FontFamily=Fira Code
+let mapleader=" "
+
+nnoremap <CR> :nohlsearch<CR><CR>
+
+" Use Q for formatting the current paragraph (or visual selection)
+vmap Q gq
+nmap Q gqap
+
+xnoremap p "_dP
+
+" Closing tabs
+nmap <leader>q :action CloseContent<CR>
+nmap <leader>Q :action ReopenClosedTab<CR>
+
+" To navigate between split panes
+nmap <leader>wo :action NextSplitter<CR>
+nmap <leader>wp :action PrevSplitter<CR>
+nmap <leader>j :action PrevSplitter<CR>
+
+" Splits manipulation
+nmap <leader>ws :action SplitHorizontally<CR>
+nmap <leader>wv :action SplitVertically<CR>
+nmap <leader>wc :action Unsplit<CR>
+nmap <leader>wC :action UnsplitAll<CR>
+nmap <leader>wd :action OpenEditorInOppositeTabGroup<CR>
+nmap <leader><leader> :action VimFilePrevious<CR>
+" nmap <leader>ww :action JumpToLastWindow<CR>
+
+" Navigation
+nmap W <Plug>(easymotion-w)
+nmap B <Plug>(easymotion-b)
+vmap W <Plug>(easymotion-w)
+vmap B <Plug>(easymotion-b)
+nmap <leader>h :action Back<CR>
+nmap <leader>l :action Forward<CR>
+nmap <leader>L :action RecentLocations<CR>
+nmap <leader>g :action GotoDeclaration<CR>
+nmap <leader>u :action FindUsages<CR>
+nmap <leader>f :action GotoFile<CR>
+nmap <leader>c :action GotoClass<CR>
+nmap <leader>s :action GotoSymbol<CR>
+" nmap <leader>m :action FileStructurePopup<CR>
+nmap <leader>; :action FileStructurePopup<CR>
+nmap <leader>M :action ActivateStructureToolWindow<CR>
+nmap <leader>d :action ShowErrorDescription<CR>
+nmap <leader>i :action GotoImplementation<CR>
+nmap <leader>I :action SelectIn<CR>
+nmap <leader>e :action RecentFiles<CR>
+nmap <leader>t :action GotoTest<CR>
+nmap <leader>p :action JumpToLastWindow<CR>
+nmap <leader>b :action ShowBookmarks<CR>
+
+" nmap <leader>a :action Switcher<CR>
+nmap <leader>a :action RecentChangedFiles<CR>
+
+" Errors
+nmap <leader>x :action GotoNextError<CR>
+nmap <leader>X :action GotoPreviousError<CR>
+
+" Refactorings
+vmap T :action Refactorings.QuickListPopupAction<CR>
+vmap Y :action SurroundWith<CR>
+nmap <leader>rw :action Unwrap<CR>
+nmap <leader>rs :action SurroundWith<CR>
+nmap <leader>rr :action RenameElement<CR>
+nmap <leader>rg :action Generate<CR>
+nmap <leader>rI :action OptimizeImports<CR>
+nmap <leader>re :action ReformatCode<CR>
+" vmap gq :action ReformatCode<CR>
+" Inspection
+nmap <leader>rc :action InspectCode<CR>
+
+" VCS operations
+nmap <leader>yy :action Vcs.Show.Local.Changes<CR>
+nmap <leader>yp :action Vcs.QuickListPopupAction<CR>
+nmap <leader>ya :action Annotate<CR>
+nmap <leader>yl :action Vcs.Show.Log<CR>
+nmap <leader>yd :action Compare.LastVersion<CR>
+" nmap <leader>yr :action Git.ResolveConflicts<CR>
+
+" Terminal
+nmap <leader>T :action ActivateTerminalToolWindow<CR>
+
+" IdeaVim uses 'a' for alt instead of Vim's 'm'
+nmap <s-j> 15gj
+nmap <s-k> 15gk
+
+" unimpaired mappings - from https://github.com/saaguero/ideavimrc/blob/master/.ideavimrc
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+nnoremap [q :action PreviousOccurence<CR>
+nnoremap ]q :action NextOccurence<CR>
+nnoremap [m :action MethodUp<CR>
+nnoremap ]m :action MethodDown<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<CR>
+nnoremap ]c :action VcsShowNextChangeMarker<CR>
+
+" Tabs (gt and gT also work)
+nnoremap ]b :action NextTab<CR>
+nnoremap [b :action PreviousTab<CR>
+
+" Search
+nmap <leader>/ :action Find<CR>
+nmap <leader>\ :action FindInPath<CR>
+
+" Moving lines
+nnoremap <a-j> :action MoveLineDown<CR>
+nnoremap <a-k> :action MoveLineUp<CR>
+vnoremap <a-j> :action MoveLineDown<CR>
+vnoremap <a-k> :action MoveLineUp<CR>
+" Moving statements
+nnoremap <a-h> :action MoveStatementUp<CR>
+nnoremap <a-l> :action MoveStatementDown<CR>
+
+" Building, Running and Debugging
+nmap ,c :action CompileDirty<CR>
+nmap ,r :action Run<CR>
+nmap ,R :action RunAnything<CR>
+nmap ,b :action Debug<CR>
+nmap ,c :action RunClass<CR>
+nmap ,d :action DebugClass<CR>
+nmap ,t :action RerunTests<CR>
+nmap ,T :action RerunFailedTests<CR>

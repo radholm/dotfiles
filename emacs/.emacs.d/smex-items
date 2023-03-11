@@ -1,0 +1,30 @@
+
+;; ----- smex-history -----
+(
+ magit
+ package-update-all
+ package-reinstall
+ package-install
+ load-file
+ set-mark-command
+ lsp-mode
+)
+
+;; ----- smex-data -----
+(
+ (load-file . 2)
+ (projectile-add-known-project . 2)
+ (magit . 5)
+ (magit-branch . 1)
+ (treesit-install-language-grammar . 1)
+ (projectile-compile-project . 1)
+ (lsp-install-server . 1)
+ (lsp-eslint-fix-all . 2)
+ (lsp-mode . 2)
+ (shell-command-on-region . 2)
+ (set-mark-command . 1)
+ (package-reinstall . 2)
+ (package-install . 1)
+ (package-update-all . 2)
+ (magit-discard . 1)
+)
