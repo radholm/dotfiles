@@ -57,7 +57,7 @@ require('lspconfig').tsserver.setup {
 require('lspconfig').jsonls.setup {
     on_attach = on_attach
 }
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
     on_attach = on_attach,
     settings = {
         Lua = {
