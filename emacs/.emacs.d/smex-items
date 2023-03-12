@@ -1,19 +1,19 @@
 
 ;; ----- smex-history -----
 (
+ projectile-add-known-project
  dired
  magit
  package-update-all
  package-reinstall
  package-install
  load-file
- set-mark-command
 )
 
 ;; ----- smex-data -----
 (
  (load-file . 2)
- (projectile-add-known-project . 2)
+ (projectile-add-known-project . 3)
  (magit . 5)
  (magit-branch . 1)
  (treesit-install-language-grammar . 1)
@@ -27,5 +27,5 @@
  (package-install . 1)
  (package-update-all . 2)
  (magit-discard . 1)
- (dired . 1)
+ (dired . 4)
 )

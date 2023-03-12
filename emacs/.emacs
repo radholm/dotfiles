@@ -35,10 +35,6 @@
 (use-package json-mode :ensure t)
 (use-package typescript-mode :ensure t)
 (use-package dash :ensure t)
-;; (use-package magit
-;;   :ensure t
-;;   :config
-;;   (add-hook 'after-save-hook 'magit-after-save-refresh-status))
 
 (use-package ivy
   :ensure t
@@ -185,6 +181,11 @@
   (when (get-buffer "*compilation*")
     (kill-buffer "*compilation*")))
 
+(defun repeat-recent-shell-command ()
+  "Repeats the most recent shell-command."
+  (interactive)
+  (shell-command (car-safe shell-command-history)))
+
 ;; KEYBINDINGS
 
 ;;(which-key-add-prefix-title-based-replacements "+" "")
@@ -201,6 +202,7 @@
 (evil-define-key 'normal 'global (kbd "<leader>pc") 'projectile-compile-project)
 (evil-define-key 'normal 'global (kbd "<leader>pr") 'projectile-run-project)
 (evil-define-key 'normal 'global (kbd "<leader>pk") 'kill-compilation-buffer)
+(evil-define-key 'normal 'global (kbd "<leader>sr") 'repeat-recent-shell-command)
 (evil-define-key 'normal 'global (kbd "<leader>m") 'magit)
 (evil-define-key 'normal 'global (kbd "<leader>t") 'counsel-load-theme)
 (evil-define-key 'normal 'global (kbd "<leader>X") 'previous-error)
@@ -217,8 +219,6 @@
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
    '(elpy gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
-;;; .emacs ends here
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
