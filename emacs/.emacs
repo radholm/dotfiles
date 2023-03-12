@@ -35,6 +35,10 @@
 (use-package json-mode :ensure t)
 (use-package typescript-mode :ensure t)
 (use-package dash :ensure t)
+;;(use-package evil-multiedit :ensure t :config (evil-multiedit-default-keybinds))
+(use-package evil-mc :ensure t)
+(global-evil-mc-mode 1)
+(setq evil-mc-mode-line-text-inverse-colors t)
 
 (use-package ivy
   :ensure t
