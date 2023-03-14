@@ -12,6 +12,10 @@
 
 (setq user-full-name "Fredrik Radholm")
 (setq inhibit-startup-message t)
+(setq mouse-wheel-progressive-speed nil)
+(setq mouse-wheel-scroll-amount '(0.07))
+(setq mouse-wheel-tilt-scroll t)
+(setq backup-directory-alist `(("." . "~/.emacs.d/backup-list")))
 ;;(set-frame-parameter nil 'alpha '(95 95))
 ;;(setq visible-bell t)
 (global-display-line-numbers-mode t)
@@ -35,10 +39,14 @@
 (use-package json-mode :ensure t)
 (use-package typescript-mode :ensure t)
 (use-package dash :ensure t)
-;;(use-package evil-multiedit :ensure t :config (evil-multiedit-default-keybinds))
 (use-package evil-mc :ensure t)
 (global-evil-mc-mode 1)
 (setq evil-mc-mode-line-text-inverse-colors t)
+
+(use-package scroll-on-jump
+  :config
+  (setq scroll-on-jump-duration 0.4)
+  (setq scroll-on-jump-curve-power 2))
 
 (use-package ivy
   :ensure t
@@ -51,18 +59,39 @@
 	  (t . ivy-sort-function-buffer)))
   (ivy-mode 1))
 
+(setq evil-want-C-u-scroll t)
 (use-package evil
   :demand t
   :bind (("<escape>" . keyboard-escape-quit))
   :init
-  (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
+  (setq evil-want-integration t)
   (setq evil-undo-system 'undo-fu)
   :config
   (evil-commentary-mode)
   (evil-mode 1))
-(use-package undo-fu)
-(add-hook 'magit-mode-hook 'evil-local-mode)
+(use-package undo-fu
+  :config
+  (evil-set-undo-system 'undo-redo)
+  (add-hook 'magit-mode-hook 'evil-local-mode))
+
+(with-eval-after-load 'evil
+  (scroll-on-jump-advice-add evil-undo)
+  (scroll-on-jump-advice-add evil-redo)
+  (scroll-on-jump-advice-add evil-jump-item)
+  (scroll-on-jump-advice-add evil-jump-forward)
+  (scroll-on-jump-advice-add evil-jump-backward)
+  (scroll-on-jump-advice-add evil-search-next)
+  (scroll-on-jump-advice-add evil-search-previous)
+  (scroll-on-jump-advice-add evil-forward-paragraph)
+  (scroll-on-jump-advice-add evil-backward-paragraph)
+  (scroll-on-jump-advice-add evil-goto-mark)
+  (scroll-on-jump-with-scroll-advice-add evil-goto-line)
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-down)
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-up)
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-center)
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-top)
+  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-bottom))
 
 (use-package evil-collection
   :after evil
@@ -77,7 +106,6 @@
 (evil-set-leader 'normal (kbd "SPC"))
 (with-eval-after-load 'evil-maps
   (define-key evil-insert-state-map (kbd "SPC") nil))
-(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 
 (use-package evil-commentary
   :after evil
@@ -198,8 +226,9 @@
 (evil-define-key 'normal 'global (kbd "<leader>cr") 'config-reload)
 (evil-define-key 'normal 'global (kbd "<leader>ce") 'config-edit)
 (which-key-add-key-based-replacements "<leader>b" "Buffers")
-(evil-define-key 'normal 'global (kbd "<leader>bb") 'counsel-switch-buffer)
-(evil-define-key 'normal 'global (kbd "<leader>bd") 'kill-buffer)
+;; (evil-define-key 'normal 'global (kbd "<leader>bb") 'counsel-switch-buffer)
+(evil-define-key 'normal 'global (kbd "<leader><SPC>") 'counsel-switch-buffer)
+(evil-define-key 'normal 'global (kbd "<leader>bk") 'projectile-kill-buffers)
 (evil-define-key 'normal 'global (kbd "<leader>pp") 'projectile-switch-project)
 (evil-define-key 'normal 'global (kbd "<leader>pf") 'projectile-find-file)
 (evil-define-key 'normal 'global (kbd "<leader>pm") 'projectile-command-map)
@@ -211,8 +240,7 @@
 (evil-define-key 'normal 'global (kbd "<leader>t") 'counsel-load-theme)
 (evil-define-key 'normal 'global (kbd "<leader>X") 'previous-error)
 (evil-define-key 'normal 'global (kbd "<leader>x") 'next-error)
-(global-set-key (kbd "C-c i") 'indent-region)
-(global-set-key (kbd "C-c t") 'select-theme)
+(evil-define-key 'visual 'global (kbd "gq") 'indent-region)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -222,11 +250,10 @@
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
-   '(elpy gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
+   '(redo-fu scroll-on-jump elpy gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(lsp-ui-underline-error ((t (:underline t :inherit error)))))
-(put 'narrow-to-region 'disabled nil)
+ )
