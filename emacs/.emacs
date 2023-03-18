@@ -93,26 +93,6 @@
   (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-top)
   (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-bottom))
 
-(use-package evil-collection
-  :after evil
-  :ensure t
-  :config
-  (evil-collection-init)
-  (evil-collection-init 'magit))
-
-(use-package evil-leader
-  :after evil
-  :ensure t)
-(evil-set-leader 'normal (kbd "SPC"))
-(with-eval-after-load 'evil-maps
-  (define-key evil-insert-state-map (kbd "SPC") nil))
-
-(use-package evil-commentary
-  :after evil
-  :demand t
-  :config
-  (evil-commentary-mode))
-
 (use-package smex
   :ensure t
   :config
@@ -136,13 +116,9 @@
   (setq lsp-diagnostic-filter-regexp "Could not find a declaration file for module")
   (setq lsp-headerline-breadcrumb-enable nil))
 (with-eval-after-load 'lsp-mode
-  ;; (require 'dap-chrome)
   (setq lsp-modeline-diagnostics-enable t)
   (setq lsp-eslint-enable t)
-  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
-  ;; (yas-global-mode)
-  )
-(with-eval-after-load 'js (define-key js-mode-map (kbd "M-.") nil))
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 (add-hook 'js-mode-hook #'lsp)
 
 (use-package flycheck
@@ -155,9 +131,7 @@
   (flycheck-add-mode 'javascript-eslint 'web-mode)
   (flycheck-add-mode 'javascript-eslint 'js-mode)
   (flycheck-add-mode 'javascript-eslint 'typescript-mode)
-  (flycheck-add-mode 'javascript-eslint 'typescript-tsx-mode)
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-(setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+  (flycheck-add-mode 'javascript-eslint 'typescript-tsx-mode))
 
 (use-package projectile
   :ensure t
@@ -165,6 +139,7 @@
   (setq projectile-enable-caching t)
   (setq projectile-completion-system 'ivy)
   (setq projectile-indexing-method 'alien)
+  (setq projectile-per-project-compilation-buffer t)
   (setq ivy-sort-matches-functions-alist
 	'((projectile-switch-project . ivy-prefix-sort)
 	  (projectile-find-file . ivy-prefix-sort)))
@@ -220,13 +195,12 @@
 
 ;; KEYBINDINGS
 
-;;(which-key-add-prefix-title-based-replacements "+" "")
-(which-key-add-key-based-replacements "<leader>c" "Config")
-;;(which-key-replace-alist '((("<leader>b") . "Buffers")))
+;; (which-key-add-prefix-title-based-replacements "+" "")
+;; (which-key-add-key-based-replacements "<leader>c" "Config")
+;; (which-key-replace-alist '((("<leader>b") . "Buffers")))
+;; (which-key-add-key-based-replacements "<leader>b" "Buffers")
 (evil-define-key 'normal 'global (kbd "<leader>cr") 'config-reload)
 (evil-define-key 'normal 'global (kbd "<leader>ce") 'config-edit)
-(which-key-add-key-based-replacements "<leader>b" "Buffers")
-;; (evil-define-key 'normal 'global (kbd "<leader>bb") 'counsel-switch-buffer)
 (evil-define-key 'normal 'global (kbd "<leader><SPC>") 'counsel-switch-buffer)
 (evil-define-key 'normal 'global (kbd "<leader>bk") 'projectile-kill-buffers)
 (evil-define-key 'normal 'global (kbd "<leader>pp") 'projectile-switch-project)
@@ -236,6 +210,7 @@
 (evil-define-key 'normal 'global (kbd "<leader>pr") 'projectile-run-project)
 (evil-define-key 'normal 'global (kbd "<leader>pk") 'kill-compilation-buffer)
 (evil-define-key 'normal 'global (kbd "<leader>sr") 'repeat-recent-shell-command)
+(evil-define-key 'normal 'global (kbd "<leader>d") 'dired)
 (evil-define-key 'normal 'global (kbd "<leader>m") 'magit)
 (evil-define-key 'normal 'global (kbd "<leader>t") 'counsel-load-theme)
 (evil-define-key 'normal 'global (kbd "<leader>X") 'previous-error)
@@ -250,7 +225,7 @@
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
-   '(redo-fu scroll-on-jump elpy gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
+   '(magit redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
