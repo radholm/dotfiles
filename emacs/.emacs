@@ -32,14 +32,17 @@
 (show-paren-mode t)
 (setq show-paren-delay 0)
 
-(elpy-enable)
 (use-package lsp-ui :ensure t)
 (use-package company :ensure t)
+(setq company-minimum-prefix-length 1
+      company-idle-delay 0.0)
 (use-package hydra :ensure t)
 (use-package json-mode :ensure t)
 (use-package typescript-mode :ensure t)
 (use-package dash :ensure t)
 (use-package evil-mc :ensure t)
+(use-package magit :ensure t)
+(add-hook 'after-save-hook 'magit-after-save-refresh-status t)
 (global-evil-mc-mode 1)
 (setq evil-mc-mode-line-text-inverse-colors t)
 
@@ -59,17 +62,37 @@
 	  (t . ivy-sort-function-buffer)))
   (ivy-mode 1))
 
-(setq evil-want-C-u-scroll t)
-(use-package evil
-  :demand t
-  :bind (("<escape>" . keyboard-escape-quit))
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init)
+  (evil-collection-init 'magit))
+
+(use-package evil-leader
+  :ensure t
   :init
   (setq evil-want-keybinding nil)
+  (evil-set-leader 'normal (kbd "SPC"))
+  (global-evil-leader-mode))
+
+(use-package evil-commentary
+  :after evil
+  :ensure t
+  :config
+  (evil-commentary-mode))
+
+
+(use-package evil
+  :ensure t
+  :init
   (setq evil-want-integration t)
   (setq evil-undo-system 'undo-fu)
+  (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
   :config
   (evil-commentary-mode)
   (evil-mode 1))
+
 (use-package undo-fu
   :config
   (evil-set-undo-system 'undo-redo)
@@ -167,14 +190,6 @@
   (if (eq system-type 'windows-nt)
       (find-file "$HOME/.emacs.d/init.el")
     (find-file "~/.emacs")))
-
-(defun select-theme ()
-  "Select a theme using Ivy."
-  (interactive)
-  (let ((buf (get-buffer-create "*Themes*")))
-    (with-current-buffer buf
-      (customize-themes)
-      (read-only-mode 1))))
 
 (defun meta-csw-grep ()
   "Grep meta-csw dir."

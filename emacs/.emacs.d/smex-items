@@ -1,32 +1,41 @@
 
 ;; ----- smex-history -----
 (
- flycheck-info
- lsp-mode
- projectile-add-known-project
  dired
- magit
- package-update-all
- package-reinstall
+ package-autoremove
+ lsp-mode
+ cancel-debug-on-entry
+ debug-on-entry
+ scroll-up-command
+ recenter
 )
 
 ;; ----- smex-data -----
 (
  (load-file . 2)
  (projectile-add-known-project . 3)
- (magit . 5)
+ (magit . 7)
  (magit-branch . 1)
  (treesit-install-language-grammar . 1)
  (projectile-compile-project . 1)
  (lsp-install-server . 1)
- (lsp-eslint-fix-all . 2)
- (lsp-mode . 4)
+ (lsp-eslint-fix-all . 4)
+ (lsp-mode . 6)
  (shell-command-on-region . 2)
  (set-mark-command . 1)
  (package-reinstall . 2)
  (package-install . 1)
  (package-update-all . 2)
  (magit-discard . 1)
- (dired . 4)
+ (dired . 7)
  (flycheck-info . 1)
+ (describe-variable . 2)
+ (recenter . 4)
+ (scroll-up-command . 5)
+ (debug-on-entry . 6)
+ (cancel-debug-on-entry . 5)
+ (ivy-scroll-up-command . 1)
+ (lsp-eslint-apply-all-fixes . 2)
+ (projectile-kill-buffers . 1)
+ (package-autoremove . 1)
 )

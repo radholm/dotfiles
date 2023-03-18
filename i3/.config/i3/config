@@ -8,6 +8,8 @@ exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id xset r rate 210 40
 exec --no-startup-id numlockx
 exec --no-startup-id dunst
+exec --no-startup-id easyeffects --gapplication-service
+exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec xinput set-prop 13 "libinput Tapping Enabled" 1
 exec xinput set-prop 13 "libinput Natural Scrolling Enabled" 1
 
