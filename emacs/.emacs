@@ -12,11 +12,13 @@
 
 (setq user-full-name "Fredrik Radholm")
 (setq inhibit-startup-message t)
+(setq electric-pair-mode t)
 (setq mouse-wheel-progressive-speed nil)
 (setq mouse-wheel-scroll-amount '(0.07))
 (setq mouse-wheel-tilt-scroll t)
+(setq find-file-visit-truename t)
 (setq backup-directory-alist `(("." . "~/.emacs.d/backup-list")))
-;;(set-frame-parameter nil 'alpha '(95 95))
+(set-frame-parameter nil 'alpha '(95 95))
 ;;(setq visible-bell t)
 (global-display-line-numbers-mode t)
 ;;(setq display-line-numbers-type 'relative)
@@ -27,24 +29,39 @@
 (setq-default truncate-lines t)
 (setq-default indent-tabs-mode nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
-(load-theme 'gruber-darker t)
+(load-theme 'doom-palenight t)
 (set-face-attribute 'default nil :font "iosevka extended-14")
 (show-paren-mode t)
 (setq show-paren-delay 0)
 
+(use-package doom-modeline :ensure t :init (doom-modeline-mode 1))
+(setq doom-modeline-height 1)
+(setq doom-modeline-icon nil)
+(use-package all-the-icons :ensure t)
 (use-package lsp-ui :ensure t)
-(use-package company :ensure t)
-(setq company-minimum-prefix-length 1
-      company-idle-delay 0.0)
+(use-package company :ensure t :init (company-mode 1))
+(setq company-minimum-prefix-length 1 company-idle-delay 0.0)
 (use-package hydra :ensure t)
 (use-package json-mode :ensure t)
 (use-package typescript-mode :ensure t)
 (use-package dash :ensure t)
 (use-package evil-mc :ensure t)
+(use-package gcmh :config (gcmh-mode 1))
+(setq gc-cons-threshold (* 100 1024 1024))
 (use-package magit :ensure t)
 (add-hook 'after-save-hook 'magit-after-save-refresh-status t)
 (global-evil-mc-mode 1)
 (setq evil-mc-mode-line-text-inverse-colors t)
+(desktop-save-mode 1)
+(add-hook 'kill-emacs-hook (lambda () (desktop-save-in-desktop-dir)))
+
+(global-set-key (kbd "C-<backspace>") 'custom/backward-kill-word)
+(use-package smart-hungry-delete
+  :ensure t
+  :bind (([remap backward-delete-char-untabify] . smart-hungry-delete-backward-char)
+	       ([remap delete-backward-char] . smart-hungry-delete-backward-char)
+	       ([remap delete-char] . smart-hungry-delete-forward-char))
+  :init (smart-hungry-delete-add-default-hooks))
 
 (use-package scroll-on-jump
   :config
@@ -81,7 +98,6 @@
   :ensure t
   :config
   (evil-commentary-mode))
-
 
 (use-package evil
   :ensure t
@@ -143,6 +159,16 @@
   (setq lsp-eslint-enable t)
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 (add-hook 'js-mode-hook #'lsp)
+(add-hook 'rust-mode-hook #'lsp)
+
+(use-package rustic)
+(use-package tree-sitter-langs :ensure t)
+(use-package tree-sitter
+  :ensure t
+  :config
+  (global-tree-sitter-mode)
+  (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode))
+(add-hook 'rust-mode-hook #'tree-sitter-mode)
 
 (use-package flycheck
   :ensure t
@@ -173,6 +199,37 @@
 				  :test "npm run test"
 				  :run "nrd"
 				  :test-suffix ".spec")
+(projectile-register-project-type 'rust '("Cargo.toml")
+                                  :project-file "Cargo.toml"
+				  :compile "cargo build"
+				  :run "cargo run")
+
+;; ORG MODE
+
+(setq
+ org-startup-indented t
+ org-indent-mode t
+ org-auto-align-tags nil
+ org-tags-column 0
+ org-catch-invisible-edits 'show-and-error
+ org-special-ctrl-a/e t
+ org-insert-heading-respect-content t
+ org-hide-emphasis-markers t
+ org-pretty-entities t
+ org-ellipsis "…"
+ org-agenda-tags-column t
+ org-agenda-block-separator ?─
+ org-agenda-time-grid
+ '((daily today require-timed)
+   (800 1000 1200 1400 1600 1800 2000)
+   " ┄┄┄┄┄ " "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")
+ org-agenda-current-time-string
+ "⭠ now ─────────────────────────────────────────────────")
+
+(global-org-modern-mode)
+(defun my-org-faces ()
+    (set-face-attribute 'org-level-1 nil :height 150))
+(add-hook 'org-mode-hook #'my-org-faces)
 
 ;; FUNCTIONS
 
@@ -181,7 +238,7 @@
   (interactive)
   (let ((init-file (if (eq system-type 'windows-nt)
 		       "~/.emacs.d/init.el"
-		     "~/.emacs")))
+                     "~/.emacs")))
     (load-file init-file)))
 
 (defun config-edit ()
@@ -208,6 +265,14 @@
   (interactive)
   (shell-command (car-safe shell-command-history)))
 
+(defun custom/backward-kill-word ()
+  (interactive)
+  (if (looking-back "[ \n]")
+      (progn (delete-horizontal-space 't)
+             (while (looking-back "[ \n]")
+               (backward-delete-char 1)))
+    (backward-kill-word 1)))
+
 ;; KEYBINDINGS
 
 ;; (which-key-add-prefix-title-based-replacements "+" "")
@@ -219,6 +284,7 @@
 (evil-define-key 'normal 'global (kbd "<leader><SPC>") 'counsel-switch-buffer)
 (evil-define-key 'normal 'global (kbd "<leader>bk") 'projectile-kill-buffers)
 (evil-define-key 'normal 'global (kbd "<leader>pp") 'projectile-switch-project)
+(setq projectile-switch-project-action 'projectile-commander)
 (evil-define-key 'normal 'global (kbd "<leader>pf") 'projectile-find-file)
 (evil-define-key 'normal 'global (kbd "<leader>pm") 'projectile-command-map)
 (evil-define-key 'normal 'global (kbd "<leader>pc") 'projectile-compile-project)
@@ -240,10 +306,11 @@
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
-   '(magit redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
+   '(smart-hungry-delete rustic tree-sitter-langs gcmh doom-themes org-modern all-the-icons doom-modeline magit redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(line-number ((t (:inherit default :foreground "#676E95" :slant normal))))
+ '(line-number-current-line ((t (:weight bold :inherit default :slant normal)))))

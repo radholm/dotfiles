@@ -16,3 +16,4 @@ alias vim='nvim'
 alias icat='kitty +kitten icat'
 
 #[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+. "$HOME/.cargo/env"
