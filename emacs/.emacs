@@ -248,6 +248,11 @@
       (find-file "$HOME/.emacs.d/init.el")
     (find-file "~/.emacs")))
 
+(defun notes ()
+  "Find the note file."
+  (interactive)
+    (find-file "~/Notes/notes.org"))
+
 (defun meta-csw-grep ()
   "Grep meta-csw dir."
   (interactive)
@@ -281,6 +286,7 @@
 ;; (which-key-add-key-based-replacements "<leader>b" "Buffers")
 (evil-define-key 'normal 'global (kbd "<leader>cr") 'config-reload)
 (evil-define-key 'normal 'global (kbd "<leader>ce") 'config-edit)
+(evil-define-key 'normal 'global (kbd "<leader>o") 'notes)
 (evil-define-key 'normal 'global (kbd "<leader><SPC>") 'counsel-switch-buffer)
 (evil-define-key 'normal 'global (kbd "<leader>bk") 'projectile-kill-buffers)
 (evil-define-key 'normal 'global (kbd "<leader>pp") 'projectile-switch-project)
