@@ -19,7 +19,6 @@
 (setq find-file-visit-truename t)
 (setq backup-directory-alist `(("." . "~/.emacs.d/backup-list")))
 (set-frame-parameter nil 'alpha '(95 95))
-;;(setq visible-bell t)
 (global-display-line-numbers-mode t)
 ;;(setq display-line-numbers-type 'relative)
 
