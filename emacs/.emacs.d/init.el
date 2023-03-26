@@ -233,11 +233,11 @@
 ;; FUNCTIONS
 
 (defun config-reload ()
-  "Reloads the .emacs file."
+  "Reloads the init.el file."
   (interactive)
   (let ((init-file (if (eq system-type 'windows-nt)
 		       "~/.emacs.d/init.el"
-                     "~/.emacs")))
+                     "~/.emacs.d/init.el")))
     (load-file init-file)))
 
 (defun config-edit ()
@@ -245,18 +245,12 @@
   (interactive)
   (if (eq system-type 'windows-nt)
       (find-file "$HOME/.emacs.d/init.el")
-    (find-file "~/.emacs")))
+    (find-file "~/.emacs.d/init.el")))
 
 (defun notes ()
   "Find the note file."
   (interactive)
     (find-file "~/Notes/notes.org"))
-
-(defun meta-csw-grep ()
-  "Grep meta-csw dir."
-  (interactive)
-  (let ((default-directory "~/.dev/lf/meta-csw/"))
-    (call-interactively 'rgrep)))
 
 (defun kill-compilation-buffer ()
   "Kill the `*compilation*' buffer if it exists."
