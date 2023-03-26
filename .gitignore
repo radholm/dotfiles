@@ -1,3 +1,7 @@
-/emacs/.emacs.d/*
 /emacs/.emacs~
+/emacs/.emacs.d/eln-cache*
+/emacs/.emacs.d/auto-save-list*
+/emacs/.emacs.d/elpa*
+*cache*
+*backup*
 nvim/.config/nvim/plugin/packer_compiled.lua
