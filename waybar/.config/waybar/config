@@ -2,12 +2,14 @@
     "layer": "top",
     "position": "top",
     "height": 10,
+    "width": 1240,
     "spacing": 4,
     "modules-left": ["wlr/workspaces", "custom/media"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
     "wlr/workspaces": {
-        "format": "<span line_height='1.0'>{icon}</span>",
+        //"format": "<span line_height='1.0'>{icon}</span>",
+        "format": "{icon}",
      	"on-scroll-up": "hyprctl dispatch workspace e+1",
      	"on-scroll-down": "hyprctl dispatch workspace e-1"
     },
@@ -16,9 +18,11 @@
         "spacing": 10
     },
     "clock": {
+        "interval": 5,
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "<span line_height='1.0'>{:%H:%M}</span>",
+        //"format": "<span line_height='1.0'>{:%H:%M}</span>",
+        "format": "{:%Y-%m-%d      %H:%M:%S}",
         "format-alt": "{:%Y-%m-%d}"
     },
     "battery": {
@@ -32,14 +36,16 @@
         "format-charging": "{capacity}% ",
         "format-plugged": "",
         "format-alt": "{time} {icon}",
-        "format-good": "", // An empty format will hide the module
+        "format-good": "",
+        "format-full": "", // An empty format will hide the module
         "format-icons": ["", "", "", "", ""]
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         //"format-wifi": "{essid} ({signalStrength}%) ",
         //"format-wifi": "<span font='20' line_height='0.5'></span>",
-        "format-wifi": "<span line_height='1.0'>w</span>",
+        //"format-wifi": "<span line_height='1.0'>w</span>",
+        "format-wifi": "w",
         "format-ethernet": "{ipaddr}/{cidr} ",
         //"tooltip-format": "{ifname} via {gwaddr} ",
         "tooltip-format": "{essid} ({signalStrength}%)",
@@ -55,10 +61,10 @@
         "format": "",
         //"format-bluetooth": "{volume}% {icon} {format_source}",
         //"format-bluetooth": "{volume}% <span font='14' line_height='0.5'>{icon} ",
-        "format-bluetooth": "ab{volume}%",
+        "format-bluetooth": "{volume}",
         "format-bluetooth-muted": "_source}",
         //"format-muted": " {format_source}",
-        "format-muted": "am",
+        "format-muted": "",
         //"format-source": "{volume}% ",
         "format-source": "",
         "format-source-muted": "",

@@ -18,8 +18,9 @@
 (setq mouse-wheel-tilt-scroll t)
 (setq find-file-visit-truename t)
 (setq backup-directory-alist `(("." . "~/.emacs.d/backup-list")))
-(set-frame-parameter nil 'alpha '(95 95))
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 (global-display-line-numbers-mode t)
+;;(set-frame-parameter nil 'alpha '(95 95))
 ;;(setq display-line-numbers-type 'relative)
 
 (menu-bar-mode -1)
@@ -29,7 +30,9 @@
 (setq-default indent-tabs-mode nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
 (load-theme 'doom-palenight t)
-(set-face-attribute 'default nil :font "iosevka extended-14")
+(add-to-list 'default-frame-alist '(font . "Iosevka Extended-14"))
+(setq frame-inhibit-implied-resize t)
+(setq initial-major-mode 'fundamental-mode)
 (show-paren-mode t)
 (setq show-paren-delay 0)
 
@@ -53,7 +56,6 @@
 (setq evil-mc-mode-line-text-inverse-colors t)
 (desktop-save-mode 1)
 (add-hook 'kill-emacs-hook (lambda () (desktop-save-in-desktop-dir)))
-
 (global-set-key (kbd "C-<backspace>") 'custom/backward-kill-word)
 (use-package smart-hungry-delete
   :ensure t
@@ -151,7 +153,6 @@
 (use-package lsp-mode
   :ensure t
   :config
-  (setq lsp-diagnostic-filter-regexp "Could not find a declaration file for module")
   (setq lsp-headerline-breadcrumb-enable nil))
 (with-eval-after-load 'lsp-mode
   (setq lsp-modeline-diagnostics-enable t)
@@ -159,6 +160,11 @@
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration))
 (add-hook 'js-mode-hook #'lsp)
 (add-hook 'rust-mode-hook #'lsp)
+(add-hook 'go-mode-hook #'lsp-deferred)
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+(add-hook 'go-mode-hook #'lsp-go-install-save-hooks)
 
 (use-package rustic)
 (use-package tree-sitter-langs :ensure t)
@@ -271,6 +277,20 @@
                (backward-delete-char 1)))
     (backward-kill-word 1)))
 
+;; Waybar auto-reload on save
+
+(defun waybar-reload ()
+  "Execute waybar-reload command."
+  (interactive)
+  (async-shell-command "waybar-reload"))
+
+(defun add-waybar-reload-on-save-hook ()
+  "Add `waybar-reload' to `after-save-hook' for the file."
+  (when (string= (buffer-file-name) "style.css")
+    (add-hook 'after-save-hook 'waybar-reload nil t)))
+
+(add-hook 'find-file-hook 'add-waybar-reload-on-save-hook)
+
 ;; KEYBINDINGS
 
 ;; (which-key-add-prefix-title-based-replacements "+" "")
@@ -297,6 +317,9 @@
 (evil-define-key 'normal 'global (kbd "<leader>x") 'next-error)
 (evil-define-key 'visual 'global (kbd "gq") 'indent-region)
 
+(setq gc-cons-threshold (* 200 1024 1024))
+(run-with-idle-timer 10 t 'garbage-collect)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -305,7 +328,7 @@
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
-   '(smart-hungry-delete rustic tree-sitter-langs gcmh doom-themes org-modern all-the-icons doom-modeline magit redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode ivy json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
+   '(hl-line+ smart-hungry-delete rustic tree-sitter-langs gcmh doom-themes org-modern all-the-icons doom-modeline redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

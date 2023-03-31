@@ -2,4 +2,6 @@
 
 cd ~
 
+export GTK_THEME=Raleigh
+
 exec startx

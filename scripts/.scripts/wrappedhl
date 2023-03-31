@@ -10,7 +10,7 @@ export GBM_BACKEND=nvidia-drm
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export SDL_VIDEODRIVER=wayland
 export MOZ_ENABLE_WAYLAND=1
-export GTK_THEME=Breeze-Dark
+export GTK_THEME=Raleigh
 export WLR_NO_HARDWARE_CURSORS=1
 export QT_QPA_PLATFORMTHEME=qt5ct
 
