@@ -39,7 +39,7 @@ button:hover {
 }
 
 #workspaces button.active {
-    color: #676767;
+    color: #C0C0C0;
     /*text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
 }
 
@@ -71,13 +71,15 @@ button:hover {
 #mode,
 #mpd {
     padding: 0 10px;
-    color: #ffffff;
+    color: #C0C0C0;
 }
 
-#window,
+#window {
+    color: #C0C0C0;
+}
+
 #workspaces {
     padding: 0 1px;
-    color: #000000;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -98,7 +100,7 @@ button:hover {
 #battery {
     /*background-color: #ffffff;*/
     margin: 0 0 0 0;
-    color: #000000;
+    color: #C0C0C0;
 }
 
 #battery.charging:not(.good), #battery.plugged:not(.good) {
@@ -124,7 +126,7 @@ button:hover {
 }
 
 label:focus {
-    background-color: #000000;
+    background-color: #FFFFFF;
 }
 
 #network {

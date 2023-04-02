@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ ibuffer
  global-display-line-numbers-mode
  doom-modeline-mode
  replace-string
  regexp-builder
  replace-regexp
  scratch-buffer
- org-agenda
 )
 
 ;; ----- smex-data -----
@@ -52,4 +52,5 @@
  (regexp-builder . 1)
  (global-display-line-numbers-mode . 3)
  (doom-modeline-mode . 1)
+ (ibuffer . 1)
 )

@@ -19,7 +19,8 @@
 (setq find-file-visit-truename t)
 (setq backup-directory-alist `(("." . "~/.emacs.d/backup-list")))
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
-(global-display-line-numbers-mode t)
+;; (global-display-line-numbers-mode t)
+;; (add-hook 'org-mode-hook (lambda () (setq-local display-line-numbers-mode nil)))
 ;;(set-frame-parameter nil 'alpha '(95 95))
 ;;(setq display-line-numbers-type 'relative)
 
@@ -29,7 +30,7 @@
 (setq-default truncate-lines t)
 (setq-default indent-tabs-mode nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
-(load-theme 'doom-palenight t)
+(load-theme 'kosmos t)
 (add-to-list 'default-frame-alist '(font . "Iosevka Extended-14"))
 (setq frame-inhibit-implied-resize t)
 (setq initial-major-mode 'fundamental-mode)
@@ -213,6 +214,7 @@
 
 (setq
  org-startup-indented t
+ org-startup-folded t
  org-indent-mode t
  org-auto-align-tags nil
  org-tags-column 0
@@ -328,7 +330,7 @@
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
-   '(hl-line+ smart-hungry-delete rustic tree-sitter-langs gcmh doom-themes org-modern all-the-icons doom-modeline redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
+   '(kosmos-theme phoenix-dark-mono-theme quasi-monochrome-theme hl-line+ smart-hungry-delete rustic tree-sitter-langs gcmh doom-themes org-modern all-the-icons doom-modeline redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
