@@ -19,8 +19,7 @@
 (setq find-file-visit-truename t)
 (setq backup-directory-alist `(("." . "~/.emacs.d/backup-list")))
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
-;; (global-display-line-numbers-mode t)
-;; (add-hook 'org-mode-hook (lambda () (setq-local display-line-numbers-mode nil)))
+(global-display-line-numbers-mode t)
 ;;(set-frame-parameter nil 'alpha '(95 95))
 ;;(setq display-line-numbers-type 'relative)
 
@@ -30,7 +29,7 @@
 (setq-default truncate-lines t)
 (setq-default indent-tabs-mode nil)
 (defalias 'yes-or-no-p 'y-or-n-p)
-(load-theme 'kosmos t)
+(load-theme 'danneskjold t)
 (add-to-list 'default-frame-alist '(font . "Iosevka Extended-14"))
 (setq frame-inhibit-implied-resize t)
 (setq initial-major-mode 'fundamental-mode)
@@ -238,6 +237,26 @@
     (set-face-attribute 'org-level-1 nil :height 150))
 (add-hook 'org-mode-hook #'my-org-faces)
 
+(use-package olivetti
+  :init
+  (setq olivetti-body-width .67)
+  :config
+  (defun distraction-free ()
+    "Distraction-free writing environment"
+    (interactive)
+    (if (equal olivetti-mode nil)
+        (progn
+          (window-configuration-to-register 1)
+          (delete-other-windows)
+          (text-scale-increase 2)
+          (olivetti-mode t))
+      (progn
+        (jump-to-register 1)
+        (olivetti-mode 0)
+        (text-scale-decrease 2))))
+  :bind
+  (("<f9>" . distraction-free)))
+
 ;; FUNCTIONS
 
 (defun config-reload ()
@@ -330,7 +349,7 @@
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
-   '(kosmos-theme phoenix-dark-mono-theme quasi-monochrome-theme hl-line+ smart-hungry-delete rustic tree-sitter-langs gcmh doom-themes org-modern all-the-icons doom-modeline redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
+   '(danneskjold-theme blackout olivetti kosmos-theme phoenix-dark-mono-theme quasi-monochrome-theme hl-line+ smart-hungry-delete rustic tree-sitter-langs gcmh doom-themes org-modern all-the-icons doom-modeline redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
