@@ -3,7 +3,7 @@ font pango:Iosevka Extended 6
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
-exec --no-startup-id picom
+exec --no-startup-id picom --experimental-backends
 exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id xset r rate 210 40
 exec --no-startup-id numlockx
