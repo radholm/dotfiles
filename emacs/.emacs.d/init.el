@@ -115,23 +115,23 @@
   (evil-set-undo-system 'undo-redo)
   (add-hook 'magit-mode-hook 'evil-local-mode))
 
-(with-eval-after-load 'evil
-  (scroll-on-jump-advice-add evil-undo)
-  (scroll-on-jump-advice-add evil-redo)
-  (scroll-on-jump-advice-add evil-jump-item)
-  (scroll-on-jump-advice-add evil-jump-forward)
-  (scroll-on-jump-advice-add evil-jump-backward)
-  (scroll-on-jump-advice-add evil-search-next)
-  (scroll-on-jump-advice-add evil-search-previous)
-  (scroll-on-jump-advice-add evil-forward-paragraph)
-  (scroll-on-jump-advice-add evil-backward-paragraph)
-  (scroll-on-jump-advice-add evil-goto-mark)
-  (scroll-on-jump-with-scroll-advice-add evil-goto-line)
-  (scroll-on-jump-with-scroll-advice-add evil-scroll-down)
-  (scroll-on-jump-with-scroll-advice-add evil-scroll-up)
-  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-center)
-  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-top)
-  (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-bottom))
+;; (with-eval-after-load 'evil
+;;   (scroll-on-jump-advice-add evil-undo)
+;;   (scroll-on-jump-advice-add evil-redo)
+;;   (scroll-on-jump-advice-add evil-jump-item)
+;;   (scroll-on-jump-advice-add evil-jump-forward)
+;;   (scroll-on-jump-advice-add evil-jump-backward)
+;;   (scroll-on-jump-advice-add evil-search-next)
+;;   (scroll-on-jump-advice-add evil-search-previous)
+;;   (scroll-on-jump-advice-add evil-forward-paragraph)
+;;   (scroll-on-jump-advice-add evil-backward-paragraph)
+;;   (scroll-on-jump-advice-add evil-goto-mark)
+;;   (scroll-on-jump-with-scroll-advice-add evil-goto-line)
+;;   (scroll-on-jump-with-scroll-advice-add evil-scroll-down)
+;;   (scroll-on-jump-with-scroll-advice-add evil-scroll-up)
+;;   (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-center)
+;;   (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-top)
+;;   (scroll-on-jump-with-scroll-advice-add evil-scroll-line-to-bottom))
 
 (use-package smex
   :ensure t
@@ -209,6 +209,21 @@
 				  :compile "cargo build"
 				  :run "cargo run")
 
+;; AI
+
+(use-package org-ai
+  :ensure
+  :commands (org-ai-mode)
+  :custom
+  (org-ai-openai-api-token "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")
+  :init
+  (add-hook 'org-mode-hook #'org-ai-mode))
+  ;; :config
+  ;; if you are on the gpt-4 beta:
+  ;; (setq org-ai-default-chat-model "gpt-4")
+  ;; if you are using yasnippet and want `ai` snippets
+  ;; (org-ai-install-yasnippets))
+
 ;; ORG MODE
 
 (setq
@@ -248,12 +263,12 @@
         (progn
           (window-configuration-to-register 1)
           (delete-other-windows)
-          (text-scale-increase 2)
+          (text-scale-increase 1.2)
           (olivetti-mode t))
       (progn
         (jump-to-register 1)
         (olivetti-mode 0)
-        (text-scale-decrease 2))))
+        (text-scale-decrease 1.2))))
   :bind
   (("<f9>" . distraction-free)))
 
@@ -298,19 +313,18 @@
                (backward-delete-char 1)))
     (backward-kill-word 1)))
 
-;; Waybar auto-reload on save
-
-(defun waybar-reload ()
-  "Execute waybar-reload command."
-  (interactive)
-  (async-shell-command "waybar-reload"))
-
-(defun add-waybar-reload-on-save-hook ()
-  "Add `waybar-reload' to `after-save-hook' for the file."
-  (when (string= (buffer-file-name) "style.css")
-    (add-hook 'after-save-hook 'waybar-reload nil t)))
-
-(add-hook 'find-file-hook 'add-waybar-reload-on-save-hook)
+(define-minor-mode presentation-mode
+  "Toggle presentation mode"
+  :init-value nil
+  :lighter " Pr"
+  :global t
+  (if presentation-mode
+      (progn
+        (display-line-numbers-mode 0)
+        (hide-mode-line-mode t))
+    (progn
+      (display-line-numbers-mode 1)
+      (hide-mode-line-mode 0))))
 
 ;; KEYBINDINGS
 
@@ -336,6 +350,7 @@
 (evil-define-key 'normal 'global (kbd "<leader>t") 'counsel-load-theme)
 (evil-define-key 'normal 'global (kbd "<leader>X") 'previous-error)
 (evil-define-key 'normal 'global (kbd "<leader>x") 'next-error)
+(evil-define-key 'normal 'global (kbd "<leader>q") 'presentation-mode)
 (evil-define-key 'visual 'global (kbd "gq") 'indent-region)
 
 (setq gc-cons-threshold (* 200 1024 1024))
@@ -349,7 +364,7 @@
  '(custom-safe-themes
    '("bddf21b7face8adffc42c32a8223c3cc83b5c1bbd4ce49a5743ce528ca4da2b6" default))
  '(package-selected-packages
-   '(danneskjold-theme blackout olivetti kosmos-theme phoenix-dark-mono-theme quasi-monochrome-theme hl-line+ smart-hungry-delete rustic tree-sitter-langs gcmh doom-themes org-modern all-the-icons doom-modeline redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
+   '(org-ai hide-mode-line danneskjold-theme blackout olivetti kosmos-theme phoenix-dark-mono-theme quasi-monochrome-theme hl-line+ smart-hungry-delete rustic tree-sitter-langs gcmh doom-themes org-modern all-the-icons doom-modeline redo-fu scroll-on-jump gruber-darker evil-commentary evil-leader neotree ido-vertical-mode json-mode hydra typescript-mode lsp-ui smex use-package undo-fu)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

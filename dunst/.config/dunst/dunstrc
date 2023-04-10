@@ -1,54 +1,52 @@
 # <- this tricks vim into using syntax highlighting
 [global]
 # font = Tewi 8
-font = "Iosevka, Noto Sans 11"
+font = "Iosevka Extended, Noto Sans 9"
 #icon_path = /usr/share/icons/Faenza/status/16/:/usr/share/icons/Faenza/devices/16/
 markup = yes
 format = "<b>%s</b>\n%b"
-show_icons = true 
 icon_position = left
+width = 400
 sort = yes
+offset = 40x40
 indicate_hidden = yes
-show_indicators = yes
+show_indicators = no
 alignment = left
-bounce_freq = 0
 show_age_threshold = 60
-word_wrap = no
+word_wrap = yes
 ignore_newline = no
-geometry = "320x5-5+36"
 max_icon_size=72
-transparency = 2
+ellipsize = end
+icon_corner_radius = 5
+transparency = 0
 idle_threshold = 90
 monitor = 0
 follow = mouse
 sticky_history = yes
 line_height = 0
 separator_height = 2
-padding = 8
-horizontal_padding = 8
+padding = 18
+horizontal_padding = 18
 #separator_color = frame
-startup_notification = true
-dmenu = /usr/bin/dmenu -p dunst:
+dmenu = /usr/bin/dmenu -p dunst
 browser = /usr/bin/firefox -new-tab
 corner_radius = 5
-frame_width = 2
-color = "#00c3ff"
+frame_width = 0
+color = "#111111"
 
 [urgency_low]
-# IMPORTANT: colors have to be defined in quotation marks.
-# Otherwise the '#' and following  would be interpreted as a comment.
-background = "#000000"
-foreground = "#7BA8B5"
+background = "#111111"
+foreground = "#C0C0C0"
 timeout = 3
 
 [urgency_normal]
-background = "#000000"
-foreground = "#524218"
+background = "#111111"
+foreground = "#C0C0C0"
 timeout = 10
 
 [urgency_critical]
-background = "#000000"
-foreground = "#F0D1C5"
+background = "#111111"
+foreground = "#C0C0C0"
 timeout = 0
 
 [usb]
@@ -61,5 +59,5 @@ format = "<b> %s</b>\n%b"
 
 [Spotify]
 appname=Spotify
-background = "#000000"
-foreground = "#ffffff"
+background = "#111111"
+foreground = "#C0C0C0"

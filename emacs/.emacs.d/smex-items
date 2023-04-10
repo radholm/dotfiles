@@ -1,13 +1,13 @@
 
 ;; ----- smex-history -----
 (
+ shell
+ dired-find-file
  ibuffer
  global-display-line-numbers-mode
  doom-modeline-mode
  replace-string
  regexp-builder
- replace-regexp
- scratch-buffer
 )
 
 ;; ----- smex-data -----
@@ -53,4 +53,6 @@
  (global-display-line-numbers-mode . 3)
  (doom-modeline-mode . 1)
  (ibuffer . 1)
+ (dired-find-file . 1)
+ (shell . 1)
 )

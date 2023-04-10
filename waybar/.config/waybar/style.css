@@ -100,6 +100,7 @@ button:hover {
 #battery {
     /*background-color: #ffffff;*/
     margin: 0 0 0 0;
+    margin-bottom: 3px;
     color: #C0C0C0;
 }
 

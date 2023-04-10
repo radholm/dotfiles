@@ -2,6 +2,6 @@
 
 cd ~
 
-export GTK_THEME=Raleigh
+export GTK_THEME=Jasper-Dark
 
 exec startx

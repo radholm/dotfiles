@@ -9,3 +9,9 @@
 		rebase = true
 [push]
 		autoSetupRemote = true
+[maintenance]
+	repo = /home/radhofre/.zsh/zsh-autosuggestions
+	repo = /home/radhofre/.zsh/zsh-snap
+	repo = /home/radhofre/.zsh/pure
+	repo = /home/radhofre/.zsh/zsh-autocomplete
+	repo = /home/radhofre/.zsh/zsh-syntax-highlighting
