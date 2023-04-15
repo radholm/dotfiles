@@ -15,3 +15,9 @@
 	repo = /home/radhofre/.zsh/pure
 	repo = /home/radhofre/.zsh/zsh-autocomplete
 	repo = /home/radhofre/.zsh/zsh-syntax-highlighting
+	repo = /home/radhofre/.zsh/vim
+	repo = /home/radhofre/.zsh/exa
+	repo = /home/radhofre/.zsh/fzf
+	repo = /home/radhofre/.zsh/supercharge
+	repo = /home/radhofre/.zsh/zsh-autopair
+	repo = /home/radhofre/.zsh/spaceship-prompt
