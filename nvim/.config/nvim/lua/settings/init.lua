@@ -1,15 +1,19 @@
 local set = vim.opt
 
+vim.wo.fillchars = 'eob: '
+set.guicursor = ''
+
 set.exrc = true
 set.nu = true
 set.errorbells = false
 set.updatetime = 50
-set.cmdheight = 1
+set.laststatus = 0
+set.cmdheight = 0
 set.autoread = true
-set.signcolumn = 'yes'
+set.signcolumn = 'no'
 set.nuw = 1
 
-set.mouse = "nv"
+set.mouse = 'nv'
 
 set.expandtab = true
 set.smarttab = true
@@ -20,12 +24,9 @@ set.tabstop = 4
 set.softtabstop = 4
 
 set.swapfile = false
--- set.backup = false
--- set.shell = 'c:/"Program Files"/git/bin/bash.exe'
--- set.shellcmdflag= '--login -c'
--- set.shellxquote= '"'
--- set.undodir = 'c:/Users/radhofre/.vim/undodir'
--- set.undofile = true
+set.backup = false
+set.undodir = os.getenv('HOME') .. '/.vim/undodir'
+set.undofile = true
 
 set.hlsearch = false
 set.incsearch = true
