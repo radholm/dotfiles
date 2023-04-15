@@ -8,7 +8,7 @@ exec --no-startup-id setxkbmap -option caps:escape
 exec --no-startup-id xset r rate 210 40
 exec --no-startup-id numlockx
 exec --no-startup-id dunst
-exec --no-startup-id easyeffects --gapplication-service
+#exec --no-startup-id easyeffects --gapplication-service
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
 exec --no-startup-id hsetroot -solid "#22222"
 exec xinput set-prop 13 "libinput Tapping Enabled" 1
@@ -31,14 +31,14 @@ bindsym $mod+q exec kitty
 bindsym $mod+c kill
 bindsym $mod+t exec teams --no-sandbox --disable-seccomp-filter-sandbox
 #bindsym $mod+d 
-bindsym $mod+r exec --no-startup-id dmenu_run -fn 'Iosevka Extended-7'
+bindsym $mod+r exec --no-startup-id dmenu_run -fn 'Iosevka Extended-7' -nb "#000000" -nf "#C0C0C0" -sb "#C0C0C0" -sf "#000000"
 #bindsym $mod+r exec "rofi -modi drun,run -show drun"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+odiaeresis focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -58,8 +58,8 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-bindsym $mod+h split h
-bindsym $mod+v split v
+# bindsym $mod+h split h
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle

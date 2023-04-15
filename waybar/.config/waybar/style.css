@@ -1,6 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Iosevka-extended;
+    font-weight: normal;
     font-size: 12px;
     min-height: 30px;
     padding: 0px 0px 0 0;
@@ -9,11 +10,11 @@
 
 window#waybar {
     background-color: rgba(0, 0, 0, 100);
-    border-bottom: 3px solid rgba(100, 114, 125, 0);
+    /* border-bottom: 3px solid rgba(100, 114, 125, 0); */
     margin: 10px;
     color: #C0C0C0;
     transition-property: background-color;
-    border-radius: 0px 0px 6px 6px;
+    /* border-radius: 0px 0px 6px 6px; */
     transition-duration: .5s;
 }
 
@@ -34,8 +35,8 @@ button:hover {
 }
 
 #workspaces button {
+    color: #222222;
     padding: 0 5px;
-    background-color: transparent;
 }
 
 #workspaces button.active {
