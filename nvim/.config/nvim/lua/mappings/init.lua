@@ -33,7 +33,7 @@ require('nvim_comment').setup {}
 map('n', '<leader>ff', '<cmd>Telescope find_files<CR>', opts)
 map('n', '<leader>fr', '<cmd>Telescope resume<CR>', opts)
 map('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', opts)
-map('n', '<leader>fb', '<cmd>Telescope buffers<CR>', opts)
+map('n', '<leader><leader>', '<cmd>Telescope buffers<CR>', opts)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', opts)
 map('n', '<leader>b', '<cmd>Telescope file_browser<CR>', opts)
 map('n', '<leader>fp', ":lua require'telescope'.extensions.project.project{}<CR>", opts)

@@ -30,8 +30,10 @@ autoload -Uz compinit && compinit
 # PROMPT="%F{white}%~%f %F{white}${vcs_info_msg_0_}%f"$'\n'"> "
 
 PATH="$HOME/.scripts:$HOME/.local/bin:/opt/cisco/anyconnect/bin:$(go env GOPATH)/bin:$PATH"
+
 . "$HOME/.cargo/env"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#c0c0c0,bg:#000000,hl:#ffffff --color=fg+:#d0d0d0,bg+:#000000,hl+:#ffffff --color=info:#ffffff,prompt:#ffffff,pointer:#ffffff --color=marker:#424242,spinner:#bcbcbc,header:#7f7f7f'
+export DEV=$HOME/.dev/
 
 alias vim="nvim"
 alias icat='kitty +kitten icat'

@@ -14,21 +14,20 @@ return require'packer'.startup(function()
     use('tpope/vim-fugitive')
     use('cedarbaum/fugitive-azure-devops.vim')
     use('xiyaowong/transparent.nvim')
-    use {
+    use({
         'phaazon/hop.nvim',
         branch = 'v2',
         config = function()
             require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
         end
-    }
+    })
     use({'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'})
     use('nvim-treesitter/playground')
     use('theprimeagen/harpoon')
     use('theprimeagen/refactoring.nvim')
     use('mbbill/undotree')
-    use('nvim-treesitter/nvim-treesitter-context');
-
-    use {
+    use('nvim-treesitter/nvim-treesitter-context')
+    use({
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
         requires = {
@@ -49,8 +48,7 @@ return require'packer'.startup(function()
             {'L3MON4D3/LuaSnip'},
             {'rafamadriz/friendly-snippets'},
         }
-    }
-
+    })
     use('folke/zen-mode.nvim')
     use('github/copilot.vim')
     use('eandrju/cellular-automaton.nvim')
@@ -65,5 +63,14 @@ return require'packer'.startup(function()
                 -- refer to the configuration section below
             }
         end
+    })
+    use({
+      'rmagatti/auto-session',
+      config = function()
+        require("auto-session").setup {
+          log_level = "error",
+          auto_session_suppress_dirs = { "~/", "~/Downloads", "/"},
+        }
+      end
     })
 end)
