@@ -32,7 +32,7 @@
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         //"format": "<span line_height='1.0'>{:%H:%M}</span>",
-        "format": "{:%Y-%m-%d    %H:%M:%S}",
+        "format": "{:%Y-%m-%d   %H:%M:%S}",
         "format-alt": "{:%Y-%m-%d}"
     },
     "battery": {
