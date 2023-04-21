@@ -41,13 +41,13 @@
             "warning": 30,
             "critical": 15
         },
-        "format-warning": "{capacity}% {icon}",
-        "format-critical": "{capacity}% {icon}",
+        "format-warning": "{capacity}%",
+        "format-critical": "{capacity}%",
         //"format-charging": "{capacity}% ",
         "format-charging": "{capacity}%",
         "format-plugged": "",
         "format-alt": "{time} {icon}",
-        "format-good": "",
+        "format-good": "{capacity}%",
         "format-full": "", // An empty format will hide the module
         "format-icons": ["", "", "", "", ""]
     },

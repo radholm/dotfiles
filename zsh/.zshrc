@@ -21,7 +21,7 @@ setopt AUTOCD EXTENDEDGLOB CD_SILENT
 bindkey '^ ' autosuggest-accept
 
 # autoload -Uz vcs_info
-autoload -Uz compinit && compinit
+autoload -U compinit && compinit -u
 # autoload -Uz promptinit && promptinit
 # precmd () { vcs_info }
 # zstyle :compinstall filename '/home/radhofre/.zshrc'

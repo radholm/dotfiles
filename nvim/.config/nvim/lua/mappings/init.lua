@@ -20,9 +20,10 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "<leader>rf", vim.lsp.buf.format)
 
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
+-- vim.keymap.set("n", "<leader><leader>", function()
+--     vim.cmd("so")
+-- end)
+
 
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
@@ -37,6 +38,8 @@ map('n', '<leader><leader>', '<cmd>Telescope buffers<CR>', opts)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', opts)
 map('n', '<leader>b', '<cmd>Telescope file_browser<CR>', opts)
 map('n', '<leader>fp', ":lua require'telescope'.extensions.project.project{}<CR>", opts)
+map('n', '<leader>fmg', ":lua require('telescope.builtin').live_grep({cwd = '/home/radhofre/.dev/lf/meta-csw/'})<CR>", opts)
+-- map('n', '<leader>fmg', "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<CR>", opts)
 
 map('n', '<leader>ng', '<cmd>Neogit<CR>', opts)
 map('n', '<leader>gg', '<cmd>LazyGit<CR>', opts)
@@ -47,3 +50,5 @@ map('', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.H
 -- map('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false, hint_offset = 1 })<CR>", {})
 
 map('', 's', "<cmd>HopWord<CR>", {})
+map('', '<leader>ni', "<cmd>AsyncRun npm install<CR><cmd>copen<CR>", {})
+map('', '<leader>nr', "<cmd>AsyncRun nrd<CR><cmd>copen<CR>", {})

@@ -4,9 +4,9 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id picom
-exec --no-startup-id setxkbmap -option caps:escape
-exec --no-startup-id xset r rate 210 40
-exec --no-startup-id numlockx
+#exec --no-startup-id setxkbmap -option caps:escape
+#exec --no-startup-id xset r rate 210 40
+#exec --no-startup-id numlockx
 exec --no-startup-id dunst
 #exec --no-startup-id easyeffects --gapplication-service
 exec --no-startup-id /usr/lib/polkit-kde-authentication-agent-1
@@ -30,6 +30,7 @@ tiling_drag modifier titlebar
 bindsym $mod+q exec kitty
 bindsym $mod+c kill
 bindsym $mod+t exec teams --no-sandbox --disable-seccomp-filter-sandbox
+bindsym $mod+e exec kitty --session startup.conf
 #bindsym $mod+d 
 bindsym $mod+r exec --no-startup-id dmenu_run -fn 'Iosevka Extended-7' -nb "#000000" -nf "#C0C0C0" -sb "#C0C0C0" -sf "#000000"
 #bindsym $mod+r exec "rofi -modi drun,run -show drun"
@@ -67,7 +68,7 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
