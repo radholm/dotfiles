@@ -17,6 +17,7 @@ setopt AUTOCD EXTENDEDGLOB CD_SILENT
 # setopt PROMPT_SUBST
 # bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
 # bindkey '^R' history-incremental-pattern-search-backward
+# bindkey "^l" () { clear; kitty +kitten icat "https://picsum.photos/1900/200?grayscale" }
 # bindkey -M vicmd '/' vi-history-search-forward
 bindkey '^ ' autosuggest-accept
 
@@ -38,3 +39,4 @@ export DEV=$HOME/.dev/
 alias vim="nvim"
 alias icat='kitty +kitten icat'
 
+icat "https://picsum.photos/1900/200?grayscale"
