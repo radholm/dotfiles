@@ -44,11 +44,11 @@ map('n', '<leader>fmg', ":lua require('telescope.builtin').live_grep({cwd = '/ho
 map('n', '<leader>ng', '<cmd>Neogit<CR>', opts)
 map('n', '<leader>gg', '<cmd>LazyGit<CR>', opts)
 
-map('', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<CR>", {})
-map('', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<CR>", {})
+-- map('', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<CR>", {})
+-- map('', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<CR>", {})
 -- map('', 't', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false, hint_offset = -1 })<CR>", {})
 -- map('', 'T', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false, hint_offset = 1 })<CR>", {})
 
-map('', 's', "<cmd>HopWord<CR>", {})
+map('', 'f', "<cmd>HopWord<CR>", {})
 map('', '<leader>ni', "<cmd>AsyncRun npm install<CR><cmd>copen<CR>", {})
 map('', '<leader>nr', "<cmd>AsyncRun nrd<CR><cmd>copen<CR>", {})
