@@ -1,8 +1,9 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: ModernDOS8x14;
-    font-weight: normal;
-    font-size: 14px;
+    /* font-family: ModernDOS8x14; */
+    font-family: Iosevka Extended mono;
+    font-weight: bold;
+    font-size: 12px;
     min-height: 30px;
     padding: 0px 0px 0 0;
     margin: 0 0 0 0;

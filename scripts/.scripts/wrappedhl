@@ -12,6 +12,7 @@ export SDL_VIDEODRIVER=wayland
 export MOZ_ENABLE_WAYLAND=1
 export GTK_THEME=Jasper-Dark
 export WLR_NO_HARDWARE_CURSORS=1
+export QT_QPA_PLATFORM=wayland 
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 exec Hyprland &
