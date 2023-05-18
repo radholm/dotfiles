@@ -40,3 +40,10 @@ alias vim="nvim"
 alias icat='kitty +kitten icat'
 
 icat "https://picsum.photos/1900/200?grayscale"
+
+# bun completions
+[ -s "/home/radhofre/.bun/_bun" ] && source "/home/radhofre/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
