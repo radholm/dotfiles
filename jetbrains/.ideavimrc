@@ -41,7 +41,11 @@ nmap Q gqap
 " Disable yanking when replacing
 xnoremap p "_dP
 
-" Enable yanking without spaces
+" E is same as $
+vmap E $
+nmap E $
+
+" Enable trimmed yanking
 nmap yy ^yg_
 
 " Cursor stays at yank ending
