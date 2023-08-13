@@ -35,9 +35,11 @@ PATH="$HOME/.scripts:$HOME/.local/bin:/opt/cisco/anyconnect/bin:$(go env GOPATH)
 . "$HOME/.cargo/env"
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS' --color=fg:#c0c0c0,bg:#000000,hl:#ffffff --color=fg+:#d0d0d0,bg+:#000000,hl+:#ffffff --color=info:#ffffff,prompt:#ffffff,pointer:#ffffff --color=marker:#424242,spinner:#bcbcbc,header:#7f7f7f'
 export DEV=$HOME/.dev/
+export npm_config_loglevel=silent
 
 alias vim="nvim"
-alias icat='kitty +kitten icat'
+alias icat="kitty +kitten icat"
+alias cat="bat"
 
 icat "https://picsum.photos/1900/200?grayscale"
 

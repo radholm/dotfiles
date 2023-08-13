@@ -9,6 +9,9 @@ set easymotion
 
 " Options
 set number
+set tabstop=2
+set shiftwidth=2
+set expandtab
 set startofline
 set ideamarks
 " set relativenumber

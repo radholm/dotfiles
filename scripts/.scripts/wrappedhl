@@ -15,4 +15,6 @@ export WLR_NO_HARDWARE_CURSORS=1
 export QT_QPA_PLATFORM=wayland 
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+gnome-keyring-daemon --start --components=secrets
+
 exec Hyprland &
