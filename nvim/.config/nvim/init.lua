@@ -1,5 +1,6 @@
 require('packer-config')
 require('lsp-config')
+require('lint-config')
 require('settings')
 require('mappings')
 require('colorschemes-config.dosbox')

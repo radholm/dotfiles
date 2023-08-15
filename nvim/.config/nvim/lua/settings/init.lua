@@ -17,11 +17,11 @@ set.mouse = 'nv'
 
 set.expandtab = true
 set.smarttab = true
-set.shiftwidth = 4
+set.shiftwidth = 2
 set.smartindent = true
 set.autoindent = true
-set.tabstop = 4
-set.softtabstop = 4
+set.tabstop = 2
+set.softtabstop = 2
 
 set.swapfile = false
 set.backup = false

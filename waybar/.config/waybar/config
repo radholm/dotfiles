@@ -4,9 +4,9 @@
     "height": 10,
     // "width": 1240,
     "spacing": 4,
-    "modules-left": ["wlr/workspaces", "custom/media"],
+    "modules-left": ["wlr/workspaces", "custom/media", "tray"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "pulseaudio", "network", "battery", "clock"],
+    "modules-right": ["pulseaudio", "custom/headsetbattery", "network", "battery", "clock"],
     "wlr/workspaces": {
         //"format": "<span line_height='1.0'>{icon}</span>",
         //"format": "{name}: {icon}",
@@ -25,7 +25,7 @@
         "on-click": "activate"
     },
     "tray": {
-        // "icon-size": 21,
+        //"icon-size": 12,
         "spacing": 10
     },
     "clock": {
@@ -58,6 +58,7 @@
         //"format-wifi": "<span font='20' line_height='0.5'></span>",
         //"format-wifi": "<span line_height='1.0'>w</span>",
         "format-wifi": "w",
+        "format-wifi": "{signalStrength}%",
         "format-ethernet": "{ipaddr}/{cidr} ",
         //"tooltip-format": "{ifname} via {gwaddr} ",
         "tooltip-format": "{essid} ({signalStrength}%)",
@@ -73,7 +74,8 @@
         "format": "",
         //"format-bluetooth": "{volume}% {icon} {format_source}",
         //"format-bluetooth": "{volume}% <span font='14' line_height='0.5'>{icon} ",
-        "format-bluetooth": "{volume}",
+        //"format-bluetooth": "{volume}",
+        "format-bluetooth": "",
         "format-bluetooth-muted": "_source}",
         //"format-muted": " {format_source}",
         "format-muted": "",
@@ -90,6 +92,11 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
+    },
+    "custom/headsetbattery": {
+        "exec": "bluetoothctl info F8:4E:17:94:3C:D0 | grep 'Battery Percentage' | awk '{print $4}' | sed 's/[()]//g'",
+        "format": "{}%",
+        "interval": 5,
     }
 }
 

@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: ModernDOS8x14;
-    /* font-family: Iosevka Extended mono; */
+    /* font-family: ModernDOS8x14; */
+    font-family: Iosevka Extended mono;
     font-weight: bold;
     font-size: 12px;
     min-height: 30px;
@@ -140,11 +140,17 @@ label:focus {
 }
 
 #pulseaudio {
+    padding-right: 5px;
     margin: 0 0 0 0;
 }
 
 #pulseaudio.muted {
     color: #000000;
+}
+
+#bluetooth {
+    color: #ffffff;
+    margin: 0 0 0 0;
 }
 
 #wireplumber {

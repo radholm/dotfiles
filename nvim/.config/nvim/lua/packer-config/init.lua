@@ -52,6 +52,8 @@ return require'packer'.startup(function()
             {'rafamadriz/friendly-snippets'},
         }
     })
+    use('jose-elias-alvarez/null-ls.nvim')
+    use('MunifTanjim/prettier.nvim')
     use('folke/zen-mode.nvim')
     use('github/copilot.vim')
     use('eandrju/cellular-automaton.nvim')
