@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     /* font-family: ModernDOS8x14; */
-    font-family: Iosevka Extended mono;
+    font-family: "Iosevka Extended mono", "Font Awesome 5 Free";
     font-weight: bold;
     font-size: 12px;
     min-height: 30px;
@@ -148,11 +148,6 @@ label:focus {
     color: #000000;
 }
 
-#bluetooth {
-    color: #ffffff;
-    margin: 0 0 0 0;
-}
-
 #wireplumber {
     background-color: #fff0f5;
     color: #000000;
@@ -160,6 +155,80 @@ label:focus {
 
 #wireplumber.muted {
     background-color: #f53c3c;
+}
+
+#custom-azurepr {
+    padding-right: 5px;
+    padding-left: 5px;
+    background-color: #0081E3;
+    color: #FFFFFF;
+    transition-property: background-color;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 1s;
+}
+
+#custom-azurebuild,
+#custom-azurebuild2
+{
+    font-size: 16px;
+    margin-right: 10px;
+    padding-left: 2px;
+    padding-right: 2px;
+    transition-property: color;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+    transition-delay: 1s;
+}
+
+#custom-azurebuild.failed,
+#custom-azurebuild2.failed
+{
+    color: #CD4A45
+}
+
+#custom-azurebuild.succeeded,
+#custom-azurebuild2.succeeded
+{
+    color: #55A362;
+}
+
+#custom-azurebuild.queued,
+#custom-azurebuild2.queued
+{
+    color: #0081E3;
+}
+
+#custom-azurebuild.building,
+#custom-azurebuild2.building
+{
+    color: #0081E3;
+    /* animation-name: load; */
+    /* animation-duration: 0.5s; */
+    /* animation-timing-function: ease-in-out; */
+    /* animation-iteration-count: infinite; */
+    /* animation-direction: alternate; */
+    /* animation-fill-mode: forwards; */
+  animation: pulse 1s linear infinite both;
+}
+
+@keyframes grader {
+    to {
+        background-image: radial-gradient(circle at center, #0081E3 0%, grey 50%, #000000 100%);
+    }
+}
+
+@keyframes spin {
+  to { -gtk-icon-transform: rotate(1turn); }
+}
+
+@keyframes load {
+    from {
+        box-shadow: inset 0 0px #0081E3;
+    }
+    to {
+        box-shadow: inset 0 -30px white;
+    }
 }
 
 #tray {

@@ -42,14 +42,14 @@ vmap Q gq
 nmap Q gqap
 
 " Disable yanking when replacing
-xnoremap p "_dP
+"xnoremap p "_dP
 
 " E is same as $
 vmap E $
 nmap E $
 
 " Enable trimmed yanking
-nmap yy ^yg_
+"nmap yy ^yg_
 
 " Cursor stays at yank ending
 vmap y ygv<Esc>

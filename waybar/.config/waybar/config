@@ -6,7 +6,7 @@
     "spacing": 4,
     "modules-left": ["wlr/workspaces", "custom/media", "tray"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["pulseaudio", "custom/headsetbattery", "network", "battery", "clock"],
+    "modules-right": ["custom/azurebuild2", "custom/azurebuild", "custom/azurepr", "pulseaudio", "custom/headsetbattery", "network", "battery", "clock"],
     "wlr/workspaces": {
         //"format": "<span line_height='1.0'>{icon}</span>",
         //"format": "{name}: {icon}",
@@ -58,7 +58,7 @@
         //"format-wifi": "<span font='20' line_height='0.5'></span>",
         //"format-wifi": "<span line_height='1.0'>w</span>",
         "format-wifi": "w",
-        "format-wifi": "{signalStrength}%",
+        "format-wifi": "{signalStrength} ",
         "format-ethernet": "{ipaddr}/{cidr} ",
         //"tooltip-format": "{ifname} via {gwaddr} ",
         "tooltip-format": "{essid} ({signalStrength}%)",
@@ -91,12 +91,46 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "interval": 5,
     },
     "custom/headsetbattery": {
         "exec": "bluetoothctl info F8:4E:17:94:3C:D0 | grep 'Battery Percentage' | awk '{print $4}' | sed 's/[()]//g'",
         "format": "{}%",
         "interval": 5,
+    },
+    "custom/azurepr": {
+        "exec": "azurepr",
+        "format": "<span font='12' line_height='0.5'></span> {}",
+        "interval": 10,
+        "return-type": "json",
+        "on-click": "xdg-open https://azuredo.lfnet.se/tfs/kund-kanalstod/CSW/_git/view.loan.apply-loan-commitment-mortgage.id1/pullrequests?_a=active"
+    },
+    "custom/azurebuild": {
+        "exec": "azurebuild 3d5fc237-31f6-4e53-8d75-885bd900e3ac",
+        "format": "{icon}",
+        "format-icons": {
+            "failed": "",
+            "succeeded": "",
+            "building": "󱍷",
+            "queued": "󱑁"
+        },
+        "interval": 5,
+        "return-type": "json",
+        "on-click": "xdg-open https://azuredo.lfnet.se/tfs/kund-kanalstod/CSW/_build?definitionId=597"
+    },
+    "custom/azurebuild2": {
+        "exec": "azurebuild 0bcdf476-65aa-462e-b3b4-c9bf490f0b73",
+        "format": "{icon}",
+        "format-icons": {
+            "failed": "",
+            "succeeded": "",
+            "building": "󱍷",
+            "queued": "󱑁"
+        },
+        "interval": 5,
+        "return-type": "json",
+        "on-click": "xdg-open https://azuredo.lfnet.se/tfs/kund-kanalstod/CSW/_build?definitionId=597"
     }
 }
 
