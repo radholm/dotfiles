@@ -1,12 +1,14 @@
 local set = vim.opt
 
-vim.wo.fillchars = 'eob: '
 set.guicursor = ''
 
 vim.cmd('command! W write')
 vim.cmd('command! Wq write | quit')
 vim.cmd('command! WQ write | quit')
 vim.cmd('command! Q quit')
+
+set.cmdwinheight = 1
+set.wildmode = {'list', 'longest'}
 
 set.exrc = true
 set.nu = true
