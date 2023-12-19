@@ -8,6 +8,14 @@ require('telescope-config')
 require('treesitter-config')
 require('vcs-config')
 
+vim.api.nvim_create_augroup("cmdwin_treesitter", { clear = true })
+vim.api.nvim_create_autocmd("CmdwinEnter", {
+  pattern = "*",
+  command = "TSContextToggle",
+  group = "cmdwin_treesitter",
+  desc = "Disable treesitter context in Command-line window",
+})
+
 local colors = {
   blue   = '#80a0ff',
   cyan   = '#79dac8',
@@ -24,7 +32,6 @@ local theme = {
     b = { fg = colors.white, bg = colors.black },
     c = { fg = colors.white, bg = colors.black },
   },
-
   insert = { 
     a = { fg = colors.gray, bg = colors.black },
     b = { fg = colors.gray, bg = colors.black },
@@ -40,7 +47,6 @@ local theme = {
     b = { fg = colors.gray, bg = colors.black },
     c = { fg = colors.gray, bg = colors.black },
   },
-
   inactive = {
     a = { fg = colors.gray, bg = colors.black },
     b = { fg = colors.gray, bg = colors.black },

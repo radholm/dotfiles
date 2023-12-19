@@ -6,10 +6,12 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", ":", "q:i")
-vim.keymap.set("n", "<leader>w", "q:i")
+-- vim.keymap.set("n", "<leader>w", "q:i")
 -- vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- vim.keymap.set("n", "<C-d>", "<C-d>zz")
+-- vim.keymap.set("n", "<C-u>", "<C-u>zz")
+-- vim.keymap.set("n", "<C-d>", "]]zz")
+-- vim.keymap.set("n", "<C-u>", "[[zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
@@ -43,8 +45,7 @@ map('n', '<leader>fp', ":lua require'telescope'.extensions.project.project{}<CR>
 map('n', '<leader>fmg', ":lua require('telescope.builtin').live_grep({cwd = '/home/radhofre/.dev/lf/meta-csw/'})<CR>", opts)
 -- map('n', '<leader>fmg', "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<CR>", opts)
 
-map('n', '<leader>ng', '<cmd>Neogit<CR>', opts)
-map('n', '<leader>gg', '<cmd>LazyGit<CR>', opts)
+map('n', '<leader>gg', '<cmd>G<CR>', opts)
 
 -- map('', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<CR>", {})
 -- map('', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<CR>", {})

@@ -3,6 +3,10 @@ vim.cmd.packadd('packer.nvim')
 return require'packer'.startup(function()
     use('wbthomason/packer.nvim')
     use('ur4ltz/surround.nvim')
+    use {
+      "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
     use('nvim-lualine/lualine.nvim')
     use('Evalir/dosbox-vim-colorscheme')
     use('nvim-lua/popup.nvim')
@@ -30,6 +34,11 @@ return require'packer'.startup(function()
     use('theprimeagen/refactoring.nvim')
     use('mbbill/undotree')
     use('nvim-treesitter/nvim-treesitter-context')
+    use({
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      after = "nvim-treesitter",
+      requires = "nvim-treesitter/nvim-treesitter",
+    })
     use({
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',

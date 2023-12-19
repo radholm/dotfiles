@@ -38,7 +38,7 @@ export DEV=$HOME/.dev/
 export npm_config_loglevel=silent
 
 alias vim="nvim"
-alias vimconf="nvim /home/radhofre/.dotfiles/nvim/.config/nvim/"
+alias vimconf="cd /home/radhofre/.dotfiles/nvim/.config/nvim/ ; nvim"
 alias icat="kitty +kitten icat"
 alias cat="bat"
 
