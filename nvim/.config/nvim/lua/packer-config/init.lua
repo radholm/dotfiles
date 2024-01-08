@@ -9,6 +9,13 @@ return require'packer'.startup(function()
     }
     use('nvim-lualine/lualine.nvim')
     use('Evalir/dosbox-vim-colorscheme')
+    use({'otavioschwanck/cool-substitute.nvim',
+        config = function()
+            require('cool-substitute').setup {
+                setup_keybindings = true,
+            }
+        end
+    })
     use('nvim-lua/popup.nvim')
     use('skywind3000/asyncrun.vim')
     use('terrortylor/nvim-comment')
