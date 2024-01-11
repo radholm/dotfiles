@@ -28,7 +28,6 @@ vim.keymap.set("n", "<leader>rf", vim.lsp.buf.format)
 --     vim.cmd("so")
 -- end)
 
-
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
@@ -41,6 +40,7 @@ map('n', '<leader>fg', '<cmd>Telescope live_grep<CR>', opts)
 map('n', '<leader><leader>', '<cmd>Telescope buffers<CR>', opts)
 map('n', '<leader>fh', '<cmd>Telescope help_tags<CR>', opts)
 map('n', '<leader>b', '<cmd>Telescope file_browser<CR>', opts)
+map('n', '<leader>fu', '<cmd>Telescope lsp_references<CR>', opts)
 map('n', '<leader>fp', ":lua require'telescope'.extensions.project.project{}<CR>", opts)
 map('n', '<leader>fmg', ":lua require('telescope.builtin').live_grep({cwd = '/home/radhofre/.dev/lf/meta-csw/'})<CR>", opts)
 -- map('n', '<leader>fmg', "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<CR>", opts)

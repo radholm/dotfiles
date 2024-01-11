@@ -13,6 +13,10 @@ HISTSIZE=1000
 SAVEHIST=1000
 KEYTIMEOUT=1
 EDITOR=nvim
+ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=grey
+ZSH_HIGHLIGHT_STYLES[precommand]=fg=grey
+ZSH_HIGHLIGHT_STYLES[arg0]=fg=grey
+ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=grey,bold
 setopt AUTOCD EXTENDEDGLOB CD_SILENT
 # setopt PROMPT_SUBST
 # bindkey '\t' menu-complete "$terminfo[kcbt]" reverse-menu-complete
