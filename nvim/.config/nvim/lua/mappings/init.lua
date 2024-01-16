@@ -46,6 +46,9 @@ map('n', '<leader>fmg', ":lua require('telescope.builtin').live_grep({cwd = '/ho
 -- map('n', '<leader>fmg', "<cmd>Telescope find_files find_command=rg,--ignore,--hidden,--files prompt_prefix=🔍<CR>", opts)
 
 map('n', '<leader>gg', '<cmd>G<CR>', opts)
+-- map('n', '<leader>gs', '<cmd>Telescope git_status<CR>', opts)
+map('n', '<leader>gs', '<cmd>lua require("vcs-config.git_telescope").my_git_status()<CR>', opts)
+
 
 -- map('', 'f', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = false })<CR>", {})
 -- map('', 'F', "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = false })<CR>", {})
